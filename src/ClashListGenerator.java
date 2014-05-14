@@ -16,7 +16,7 @@ public class ClashListGenerator {
 	};
 
 	public static String[] SWEN_4th_YEAR = {
-		"SWEN421","SWEN422","SWEN423","SWEN424","SWEN425","SWEN430","SWEN431","SWEN432","SWEN433"
+		"SWEN421","SWEN422","SWEN423","SWEN424","SWEN425","SWEN426","SWEN427","SWEN430","SWEN431","SWEN432","SWEN433"
 	};
 	
 	// =====================================
@@ -83,7 +83,7 @@ public class ClashListGenerator {
 	};
 	
 	public static String[] COMP_4th_YEAR = {
-		"COMP408","COMP409","COMP421","COMP422","COMP423","COMP425","COMP471","COMP472","COMP488"
+		"COMP408","COMP409","COMP421","COMP422","COMP423","COMP425","COMP471","COMP472","COMP488","COMP489"
 	};
 	
 	// =====================================
@@ -115,9 +115,20 @@ public class ClashListGenerator {
 	
 	public static Prerequisites[] prereqs = {
 		// 100-level
+		new Prerequisites("COMP112","COMP102"), // Not necessary, but allows them to clash
 		new Prerequisites("COMP103","COMP102","COMP112"),		
 		
 		// 200-level
+		new Prerequisites("COMP261","COMP103","MATH161"),
+		
+		new Prerequisites("ECEN201"),
+		new Prerequisites("ECEN202"),
+		new Prerequisites("ECEN203"),
+		new Prerequisites("ECEN220"),		
+		
+		new Prerequisites("ENGR301"),
+		new Prerequisites("ENGR302","ENGR301"),
+		
 		new Prerequisites("SWEN221","COMP103"),		
 		new Prerequisites("SWEN222","SWEN221"),
 		new Prerequisites("SWEN223","COMP103","ENGR110"),
@@ -126,11 +137,68 @@ public class ClashListGenerator {
 		new Prerequisites("NWEN241","COMP103"),
 		new Prerequisites("NWEN242","COMP103","MATH161"),
 		new Prerequisites("NWEN243","COMP103"),
-						
-		new Prerequisites("COMP261","COMP103","MATH161"),
+									
+		// 300-level
+		new Prerequisites("COMP304","MATH161","SWEN224"),
+		new Prerequisites("COMP307"),
+		new Prerequisites("COMP308","COMP261"),
+		new Prerequisites("COMP312"),
+		new Prerequisites("COMP313"),
+		new Prerequisites("COMP361","COMP261"),
+	
+		new Prerequisites("ECEN301","ECEN201"),
+		new Prerequisites("ECEN302","ECEN202"),
+		new Prerequisites("ECEN303","ECEN203"),
+		new Prerequisites("ECEN310","ECEN220"),
+		new Prerequisites("ECEN315","ECEN220"),
+		new Prerequisites("ECEN330","ECEN203"),
+				
+		new Prerequisites("NWEN301","MATH161","NWEN241","NWEN242"),
+		new Prerequisites("NWEN302","NWEN241","NWEN242"),
+		new Prerequisites("NWEN303","MATH161","NWEN242"),
+		new Prerequisites("NWEN304","MATH161","NWEN243"),
 		
+		new Prerequisites("SWEN301","SWEN222","SWEN223"),
+		new Prerequisites("SWEN302","SWEN222"),
+		new Prerequisites("SWEN303"),
+		new Prerequisites("SWEN304","COMP261","MATH161"),
 		
+		// 400-level
+		new Prerequisites("COMP408","COMP308"),
+		new Prerequisites("COMP409","COMP308"),
+		new Prerequisites("COMP421","COMP307"),
+		new Prerequisites("COMP422","COMP307"),
+		new Prerequisites("COMP423","COMP307"),
 		
+		new Prerequisites("ECEN403","ECEN303"),
+		new Prerequisites("ECEN410","ECEN310"),
+		new Prerequisites("ECEN415","ECEN315"),
+		new Prerequisites("ECEN421","ECEN320"),
+		new Prerequisites("ECEN421","ECEN320"),
+		new Prerequisites("ECEN425","ECEN301"),
+		new Prerequisites("ECEN430","ECEN301"),
+		
+		new Prerequisites("ENGR401"),
+		new Prerequisites("ENGR489"),
+		
+		new Prerequisites("NWEN401"),
+		new Prerequisites("NWEN402","NWEN302","NWEN304"),
+		new Prerequisites("NWEN403","NWEN302"),
+		new Prerequisites("NWEN404","NWEN302"),
+		new Prerequisites("NWEN405","NWEN304"),
+		new Prerequisites("NWEN406","NWEN301"),
+		
+		new Prerequisites("SWEN421","SWEN224"),
+		new Prerequisites("SWEN422","SWEN303"),
+		new Prerequisites("SWEN423"),
+		new Prerequisites("SWEN424"),
+		new Prerequisites("SWEN425","SWEN301"),
+		new Prerequisites("SWEN426","SWEN301"),
+		new Prerequisites("SWEN427","SWEN301"),
+		new Prerequisites("SWEN430"),
+		new Prerequisites("SWEN431","COMP304"),
+		new Prerequisites("SWEN432","SWEN304"),
+		new Prerequisites("SWEN433","SWEN304"),
 	};
 	
 	// =====================================
@@ -160,12 +228,12 @@ public class ClashListGenerator {
 			addClashAgainstAll(clashes,course,ALL_1st_YEAR);
 		}
 		
-		// ENGR 101 & 110 should not clash with any COMP, ECEN, ENGR, NWEN or SWEN 200-level paper.
-		for(String course : new String[]{"ENGR101","ENGR110"}) {
+		// ENGR 110 should not clash with any COMP, ECEN, ENGR, NWEN or SWEN 200-level paper.
+		for(String course : new String[]{"ENGR110"}) {
 			addClashAgainstAll(clashes,course,ALL_2nd_YEAR);
 		}
 		
-		//COMP 102/112 and 103 should not clash with DSDN 101,111,142 and 171 [*** ADDDED 112]
+		//COMP 102/112 and 103 should not clash with DSDN 101,111,142 and 171 
 		for(String course : new String[]{"DSDN101","DSDN111","DSDN112","DSDN142","DSDN171"}) {
 			addClashAgainstAll(clashes,course,COMP_1st_YEAR);
 		}
@@ -182,20 +250,43 @@ public class ClashListGenerator {
 			addClashAgainstAll(clashes,course,ECEN_2nd_YEAR);
 		}
 		
-		// 200-level NWEN should not clash with MATH 142, 244 or 261
-		for(String course : new String[]{"MATH142","MATH244", "MATH261"}) {
-			addClashAgainstAll(clashes,course,NWEN_2nd_YEAR);
-		}
-		
-		// SWEN 221, 222, 223, and 224 should not clash with MATH 261
-		for(String course : new String[]{"MATH261"}) {
-			addClashAgainstAll(clashes,course,SWEN_2nd_YEAR);
-		}
-		
 		// 200-level ECEN should not clash with PHYS 114, 115, MATH 142 nor COMP 103 
 		for(String course : new String[]{"PHYS114","PHYS115", "MATH142", "COMP103"}) {
 			addClashAgainstAll(clashes,course,ECEN_2nd_YEAR);
 		}
+				
+		// 200-level SWEN/COMP should not clash with ENGR121/123
+		for(String course : new String[]{"ENGR121","ENGR123"}) {
+			addClashAgainstAll(clashes,course,SWEN_2nd_YEAR);
+			addClashAgainstAll(clashes,course,COMP_2nd_YEAR);
+		}
+		
+		// 200-level NWEN/ECEN should not clash with ENGR121/122,123
+		for(String course : new String[]{"ENGR121","ENGR122","ENGR123"}) {
+			addClashAgainstAll(clashes,course,NWEN_2nd_YEAR);
+			addClashAgainstAll(clashes,course,ECEN_2nd_YEAR);
+		}
+		
+		// 200-level SWEN should not clash with PHYS122
+		for(String course : new String[]{"PHYS122"}) {
+			addClashAgainstAll(clashes,course,SWEN_2nd_YEAR);
+			addClashAgainstAll(clashes,course,COMP_2nd_YEAR);
+		}
+
+		
+		// 200-level NWEN should not clash with MATH 142, 244 or 261
+		for(String course : new String[]{"MATH142","MATH244", "MATH261"}) {
+			addClashAgainstAll(clashes,course,NWEN_2nd_YEAR);
+		}
+						
+		// 200-level SWEN should not clash with MATH 261
+		for(String course : new String[]{"MATH261"}) {
+			addClashAgainstAll(clashes,course,SWEN_2nd_YEAR);
+		}		
+		
+		// NWEN 241, SWEN221 should not clash with MDDN 242 
+		addClashAgainstAll(clashes,"SWEN221","MDDN242");
+		addClashAgainstAll(clashes,"NWEN241","MDDN242");
 		
 		// COMP 261 should not clash with any MATH 200-level paper, or with MDDN211, MDDN241, MDDN242
 		for(String course : MATH_2nd_YEAR) {
@@ -216,17 +307,46 @@ public class ClashListGenerator {
 			addClashAgainstAll(clashes,course,ECEN_3rd_YEAR);
 		}
 		
+		// 200-level SWEN/NWEN/COMP should not clash with all 300-level COMP/SWEN/NWEN/ENGR
+		clashAllAgainstEachOther(clashes,concat(
+				SWEN_2nd_YEAR,
+				NWEN_2nd_YEAR,
+				COMP_2nd_YEAR,
+				SWEN_3rd_YEAR,
+				NWEN_3rd_YEAR,
+				COMP_3rd_YEAR,
+				ENGR_3rd_YEAR));
+		
 		/*******************************************************
 		 *  400 Level
 		 */
-		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,NWEN_4th_YEAR,COMP_4th_YEAR,ENGR_4th_YEAR));		
-		clashAllAgainstEachOther(clashes,concat(ECEN_4th_YEAR,ENGR_4th_YEAR));		
-		
+
+		//400-level courses within each specialisation should not clash with ENGR 401 or 489; 
+		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,ENGR_4th_YEAR));		
+		clashAllAgainstEachOther(clashes,concat(NWEN_4th_YEAR,ENGR_4th_YEAR));
+		clashAllAgainstEachOther(clashes,concat(ECEN_4th_YEAR,ENGR_4th_YEAR));
+		clashAllAgainstEachOther(clashes,concat(COMP_4th_YEAR,ENGR_4th_YEAR));
+	
+		// 400-level courses within each specialisation should not clash with
+		// all 300 and 400-level courses within that specialisation.	
 		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,SWEN_3rd_YEAR));
 		clashAllAgainstEachOther(clashes,concat(NWEN_4th_YEAR,NWEN_3rd_YEAR));		
 		clashAllAgainstEachOther(clashes,concat(ECEN_4th_YEAR,ECEN_3rd_YEAR));
 		clashAllAgainstEachOther(clashes,concat(COMP_4th_YEAR,COMP_3rd_YEAR));						
-						
+	
+		// 400-level COMP/SWEN/NWEN should not clash with each other. 
+		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,NWEN_4th_YEAR,COMP_4th_YEAR));
+
+		// 400-level NWEN should not clash with ECEN403, ECEN410, ECEN421, ECEN425, ECEN430
+		for(String course : new String[]{"ECEN403","ECEN410","ECEN421","ECEN423","ECEN430"}) {
+			addClashAgainstAll(clashes,course,NWEN_4th_YEAR);
+		}
+		
+		// 400-level ECEN should not clash with NWEN402, NWEN403, NWEN404 
+		for(String course : new String[]{"NWEN402","NWEN403","NWEN404"}) {
+			addClashAgainstAll(clashes,course,ECEN_4th_YEAR);
+		}				
+		
 		// Finally, print out all clashes (in alphabetic order)
 		printClashList(clashes);
 	}
@@ -280,14 +400,10 @@ public class ClashListGenerator {
 		}
 		
 		// Second, check whether they are prerequisites
-		for(Prerequisites p : prereqs) {
-			if(p.course == c1 && contains(c2,p.prereqs)) {
-				return;
-			} else if(p.course == c2 && contains(c1,p.prereqs)) {
-				return;				
-			}
+		if(hasPrerequisite(c1,c2)) {
+			return;
 		}
-			
+				
 		// Ok, add the clash!
 		Set<String> c1_clashes = clashes.get(c1);
 		Set<String> c2_clashes = clashes.get(c2);
@@ -304,6 +420,57 @@ public class ClashListGenerator {
 		for(String course : courses) {
 			clashes.put(course,new HashSet<String>());
 		}
+	}
+	
+	/**
+	 * Determine whether c1 is a transitive prerequisite for c2 (or vice versa);
+	 * 
+	 * @param c1
+	 * @param c2
+	 * @return
+	 */
+	public static boolean hasPrerequisite(String c1, String c2) {
+		HashSet<String> c1_prereqs = new HashSet<String>();
+		computeTransitivePrereqs(c1,c1_prereqs);
+		if(c1_prereqs.contains(c2)) {
+			return true;
+		}
+		HashSet<String> c2_prereqs = new HashSet<String>();
+		computeTransitivePrereqs(c2,c2_prereqs);
+		if(c2_prereqs.contains(c1)) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Compute the full set of transitively implied prerequisites for a course.
+	 * 
+	 * @param c1
+	 * @param c1_prereqs
+	 */
+	public static void computeTransitivePrereqs(String c1, HashSet<String> c1_prereqs) {
+		HashSet<String> worklist = new HashSet<String>();
+		
+		worklist.add(c1);
+		
+		do {
+			String item = worklist.iterator().next();
+			worklist.remove(item);
+			
+			for(Prerequisites p : prereqs) {
+				if(p.course == item) {
+					for(String prereq : p.prereqs) {
+						if(!c1_prereqs.contains(prereq)) {
+							worklist.add(prereq);
+							c1_prereqs.add(prereq);
+						}
+					}
+				}
+			}
+			
+		} while(!worklist.isEmpty());
+				
 	}
 	
 	/**

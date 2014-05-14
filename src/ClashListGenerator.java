@@ -272,7 +272,11 @@ public class ClashListGenerator {
 			addClashAgainstAll(clashes,course,SWEN_2nd_YEAR);
 			addClashAgainstAll(clashes,course,COMP_2nd_YEAR);
 		}
-
+		
+		// 200-level NWEN should not clash with PHYS122/PHYS115
+		for(String course : new String[]{"PHYS122","PHYS115"}) {
+			addClashAgainstAll(clashes,course,NWEN_2nd_YEAR);			
+		}
 		
 		// 200-level NWEN should not clash with MATH 142, 244 or 261
 		for(String course : new String[]{"MATH142","MATH244", "MATH261"}) {

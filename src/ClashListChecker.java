@@ -8,6 +8,9 @@ public class ClashListChecker {
 		while(reader.ready()) {
 			String line = reader.readLine();
 			String[] split1 = line.split(":");
+			if(split1.length <= 1) {
+				continue; // bad line
+			}
 			String[] split2 = split1[1].split(" ");
 			String course = split1[0].trim();
 			Set<String> cs = clashes.get(course);

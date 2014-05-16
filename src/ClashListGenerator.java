@@ -16,7 +16,7 @@ public class ClashListGenerator {
 	};
 
 	public static String[] SWEN_4th_YEAR = {
-		"SWEN421","SWEN422","SWEN423","SWEN424","SWEN425","SWEN426","SWEN427","SWEN430","SWEN431","SWEN432","SWEN433"
+		"SWEN421","SWEN422","SWEN423","SWEN424","SWEN425","SWEN426","SWEN427","SWEN430","SWEN431","SWEN432","SWEN433","SWEN434","SWEN438","SWEN439"
 	};
 	
 	// =====================================
@@ -32,7 +32,7 @@ public class ClashListGenerator {
 	};
 
 	public static String[] NWEN_4th_YEAR = {
-		"NWEN401", "NWEN402", "NWEN403", "NWEN404", "NWEN405", "NWEN406"
+		"NWEN401", "NWEN402", "NWEN403", "NWEN404", "NWEN405", "NWEN406","NWEN438","NWEN439"
 	};
 	
 	// =====================================
@@ -199,6 +199,7 @@ public class ClashListGenerator {
 		new Prerequisites("SWEN431","COMP304"),
 		new Prerequisites("SWEN432","SWEN304"),
 		new Prerequisites("SWEN433","SWEN304"),
+		new Prerequisites("SWEN434","SWEN304"),
 	};
 	
 	// =====================================
@@ -303,8 +304,26 @@ public class ClashListGenerator {
 		/*******************************************************
 		 *  300 Level
 		 */
-		// COMP, ECEN, ENGR, NWEN and SWEN courses should not clash with each other
-		clashAllAgainstEachOther(clashes,ALL_3rd_YEAR);
+
+		// 300-level COMP/SWEN/NWEN/ECEN courses should not clash with 300-level ENGR courses. 
+		clashAllAgainstEachOther(clashes,concat(SWEN_3rd_YEAR,ENGR_3rd_YEAR));		
+		clashAllAgainstEachOther(clashes,concat(NWEN_3rd_YEAR,ENGR_3rd_YEAR));
+		clashAllAgainstEachOther(clashes,concat(ECEN_3rd_YEAR,ENGR_3rd_YEAR));
+		clashAllAgainstEachOther(clashes,concat(COMP_3rd_YEAR,ENGR_3rd_YEAR));
+
+		
+		// 300-level COMP/SWEN/NWEN courses should not clash with each other; 
+		clashAllAgainstEachOther(clashes,concat(COMP_3rd_YEAR,SWEN_3rd_YEAR,NWEN_3rd_YEAR));
+		
+		// 300-level ECEN courses should not clash with each other. 
+		clashAllAgainstEachOther(clashes,ECEN_3rd_YEAR);
+		
+		// 300-level courses within each specialisation should not clash with
+		// any 300-level courses permitted for the specialisation
+		for(String course : new String[]{"COMP307", "NWEN301","NWEN302","NWEN304", "SWEN303"}) {
+			addClashAgainstAll(clashes,course,ECEN_3rd_YEAR);
+		}
+		clashAllAgainstEachOther(clashes,concat(NWEN_3rd_YEAR,ECEN_3rd_YEAR));
 		
 		// 300-level ECEN should not clash with MATH244.
 		for(String course : new String[]{"MATH244"}) {
@@ -331,23 +350,30 @@ public class ClashListGenerator {
 		clashAllAgainstEachOther(clashes,concat(ECEN_4th_YEAR,ENGR_4th_YEAR));
 		clashAllAgainstEachOther(clashes,concat(COMP_4th_YEAR,ENGR_4th_YEAR));
 	
+		// 400-level courses within COMP/SWEN/NWEN should not clash with all 300
+		// and 400-level courses within COMP/SWEN/NWEN
+		clashAllAgainstEachOther(clashes,concat(
+				SWEN_4th_YEAR,SWEN_3rd_YEAR,
+				NWEN_4th_YEAR,NWEN_3rd_YEAR,
+				COMP_4th_YEAR,COMP_3rd_YEAR));
+		
 		// 400-level courses within each specialisation should not clash with
-		// all 300 and 400-level courses within that specialisation.	
-		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,SWEN_3rd_YEAR));
-		clashAllAgainstEachOther(clashes,concat(NWEN_4th_YEAR,NWEN_3rd_YEAR));		
-		clashAllAgainstEachOther(clashes,concat(ECEN_4th_YEAR,ECEN_3rd_YEAR));
-		clashAllAgainstEachOther(clashes,concat(COMP_4th_YEAR,COMP_3rd_YEAR));						
-	
-		// 400-level COMP/SWEN/NWEN should not clash with each other. 
-		clashAllAgainstEachOther(clashes,concat(SWEN_4th_YEAR,NWEN_4th_YEAR,COMP_4th_YEAR));
+		// any 400-level courses permitted for the specialisation
+		
+		// 400-level courses within each specialisation should not clash with
+		// any 400-level courses permitted for the specialisation. This ensures
+		// that students can take all courses that may be part of the
+		// specialisation requirements. Currently, this means ECEN 400-level
+		// courses should not clash with COMP421, NWEN402/403/404 and SWEN422;
+		// also that NWEN 400-level courses should not clash with
+		// ECEN403/410/421/425/430 (considered the currently feasible subset of
+		// courses permitted under NWEN specialisation). 
 
-		// 400-level NWEN should not clash with ECEN403, ECEN410, ECEN421, ECEN425, ECEN430
 		for(String course : new String[]{"ECEN403","ECEN410","ECEN421","ECEN423","ECEN430"}) {
 			addClashAgainstAll(clashes,course,NWEN_4th_YEAR);
 		}
-		
-		// 400-level ECEN should not clash with NWEN402, NWEN403, NWEN404 
-		for(String course : new String[]{"NWEN402","NWEN403","NWEN404"}) {
+		 
+		for(String course : new String[]{"COMP421","NWEN402","NWEN403","NWEN404","SWEN422"}) {
 			addClashAgainstAll(clashes,course,ECEN_4th_YEAR);
 		}				
 		

@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import clashtools.core.Course;
+import clashtools.core.ClashList;
 
 /**
  * This reads the course clash list as exported from Excel as a CSV file. This
@@ -35,8 +35,8 @@ public class ClashListReader {
 		this.reader = new BufferedReader(reader);
 	}
 
-	public List<Course> read() throws IOException {
-		ArrayList<Course> courses = new ArrayList<Course>();
+	public List<ClashList> read() throws IOException {
+		ArrayList<ClashList> courses = new ArrayList<ClashList>();
 
 		int lineNumber = 1;
 		while(reader.ready()) {
@@ -50,7 +50,7 @@ public class ClashListReader {
 				String noClashes = split.get(4);
 				List<String> noClashList = split(noClashes.substring(1,noClashes.length()-1),lineNumber);
 				System.out.println("NO CLASH: " + noClashList);
-				courses.add(new Course(module,noClashList));
+				courses.add(new ClashList(module,noClashList));
 			}
 			lineNumber = lineNumber+1;
 		}

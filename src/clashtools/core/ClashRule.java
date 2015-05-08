@@ -10,7 +10,7 @@ public abstract class ClashRule {
 	 * @param c
 	 * @return
 	 */
-	public abstract Diff check(Course c);
+	public abstract Diff check(ClashList c);
 
 	public static class Diff {
 		public final Set<String> extra;

@@ -1,7 +1,11 @@
-package clashtools.core;
+package clashtools.util;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import clashtools.core.ClashList;
+import clashtools.core.ClashRule;
+import clashtools.core.ClashRule.Diff;
 
 /**
  * This rule checks that every course in a list of courses is clashed against
@@ -13,12 +17,15 @@ import java.util.Set;
 public class CheckAllAgainstEachOther extends ClashRule {
 	private final Set<String> courses;
 
-	public CheckAllAgainstEachOther(Set<String> courses) {
-		this.courses = courses;
+	public CheckAllAgainstEachOther(String... courses) {
+		this.courses = new HashSet<String>();
+		for(String s : courses) {
+			this.courses.add(s);
+		}
 	}
 
 	@Override
-	public Diff check(Course c) {
+	public Diff check(ClashList c) {
 		HashSet<String> courses = new HashSet<String>(this.courses);
 		courses.remove(c.name()); // can't clash against self
 		Set<String> missing = diff(courses,c.noClashes());

@@ -12,16 +12,16 @@ import java.util.Set;
  * @author David J. Pearce
  *
  */
-public class Course {
+public class ClashList {
 	private final String name;
 	private final HashSet<String> noClashes;
 
-	public Course(String name, Collection<String> noClashList) {
+	public ClashList(String name, Collection<String> noClashList) {
 		this.name = name;
 		this.noClashes = new HashSet<String>(noClashList);
 	}
 
-	public Course(String name, String... noClash) {
+	public ClashList(String name, String... noClash) {
 		this.name = name;
 		this.noClashes = new HashSet<String>();
 		for(int i=0;i!=noClash.length;++i) {

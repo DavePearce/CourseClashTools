@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import clashtools.core.ClashList.Diff;
+
 
 /**
  * Represents an individual course and its no-class list
@@ -35,5 +37,68 @@ public class ClashList {
 
 	public Set<String> noClashes() {
 		return noClashes;
+	}
+
+
+	public static class Diff {
+		public final Set<String> extra;
+		public final Set<String> missing;
+
+		public Diff(Set<String> extra, Set<String> missing) {
+			this.extra = extra;
+			this.missing = missing;
+		}
+
+		public String toString() {
+			String r = "";
+			boolean firstTime = true;
+			for(String s : extra) {
+				if(!firstTime) {
+					r += ", ";
+				}
+				firstTime = false;
+				r += "+" + s;
+			}
+			for(String s : missing) {
+				if(!firstTime) {
+					r += ", ";
+				}
+				firstTime = false;
+				r += "-" + s;
+			}
+			return r;
+		}
+	}
+
+
+	public Diff differenceFrom(HashSet<String> expected) {
+		Set<String> missing = diff(expected,noClashes);
+		Set<String> extra = diff(noClashes,expected);
+		if(missing.isEmpty() && extra.isEmpty()) {
+			return null;
+		} else {
+			return new Diff(extra,missing);
+		}
+	}
+
+
+	private Set<String> intersect(Set<String> s1, Set<String> s2) {
+		HashSet<String> result = new HashSet<String>();
+		for(String s : s1) {
+			if(s2.contains(s)) {
+				result.add(s);
+			}
+		}
+		return result;
+	}
+
+	private Set<String> diff(Set<String> s1, Set<String> s2) {
+		HashSet<String> result = new HashSet<String>();
+		for(String s : s1) {
+			if(!s2.contains(s)) {
+				result.add(s);
+			}
+		}
+		return result;
 	}
 }

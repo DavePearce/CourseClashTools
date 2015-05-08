@@ -2,122 +2,197 @@ package clashtools;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import clashtools.core.ClashList;
 import clashtools.core.Prerequisites;
 import clashtools.core.ClashRule;
 import clashtools.io.ClashListReader;
+import clashtools.util.CheckAllAgainst;
 import clashtools.util.CheckAllAgainstEachOther;
 
 public class Main {
-
 
 	// =====================================
 	// SWEN
 	// =====================================
 
-	public static String[] SWEN_2nd_YEAR = {
-		"SWEN221-18318","SWEN222-18319","SWEN223-18320","SWEN224-18321"
+	public static String[] SWEN_2nd_YEAR_T1 = {
+		"SWEN221-18318","SWEN223-18320"
 	};
 
-	public static String[] SWEN_3rd_YEAR = {
-		"SWEN301-17183","SWEN302-17184","SWEN303-17185","SWEN304-17186"
+	public static String[] SWEN_2nd_YEAR_T2 = {
+		"SWEN222-18319","SWEN224-18321"
 	};
 
-	public static String[] SWEN_4th_YEAR = {
-			"SWEN421-18661", "SWEN422-18662",
-			"SWEN423-18663", "SWEN424-18664", "SWEN425-18665", "SWEN426-18666",
-			"SWEN427-18667", "SWEN430-18668", "SWEN431-18669", "SWEN432-18670",
-			"SWEN433-18671", "SWEN434-18672", "SWEN438-18597", "SWEN439-18598"
+
+	public static String[] SWEN_3rd_YEAR_T1 = {
+		"SWEN301-17183","SWEN303-17185"
+	};
+
+	public static String[] SWEN_3rd_YEAR_T2 = {
+		"SWEN302-17184","SWEN304-17186"
+	};
+
+	public static String[] SWEN_4th_YEAR_T1 = {
+			"SWEN421-18661", "SWEN423-18663", "SWEN430-18668", "SWEN432-18670"
+	};
+
+	public static String[] SWEN_4th_YEAR_T2 = {
+			"SWEN422-18662", "SWEN424-18664", "SWEN425-18665", "SWEN431-18669",
+			"SWEN433-18671", "SWEN439-18598"
 	};
 
 	// =====================================
 	// NWEN
 	// =====================================
 
-	public static String[] NWEN_2nd_YEAR = {
-		"NWEN241-18315","NWEN242-18316","NWEN243-18363"
+	public static String[] NWEN_2nd_YEAR_T1 = {
+		"NWEN241-18315"
 	};
 
-	public static String[] NWEN_3rd_YEAR = {
-		"NWEN301-17180","NWEN302-17181","NWEN303-17182","NWEN304-17184"
+	public static String[] NWEN_2nd_YEAR_T2 = {
+		"NWEN242-18316","NWEN243-18363"
 	};
 
-	public static String[] NWEN_4th_YEAR = {
-		"NWEN401-18602", "NWEN402-18603", "NWEN403-18604", "NWEN404-18605", "NWEN405-18606", "NWEN406-18592","NWEN438-18593","NWEN439-18594"
+	public static String[] NWEN_3rd_YEAR_T1 = {
+		"NWEN301-17180","NWEN304-17184"
+	};
+
+	public static String[] NWEN_3rd_YEAR_T2 = {
+		"NWEN302-17181","NWEN303-17182"
+	};
+
+	public static String[] NWEN_4th_YEAR_T1 = {
+		"NWEN401-18602", "NWEN403-18604", "NWEN404-18605"
+	};
+
+	public static String[] NWEN_4th_YEAR_T2 = {
+		"NWEN402-18603", "NWEN405-18606", "NWEN406-18592"
 	};
 
 	// =====================================
 	// ECEN
 	// =====================================
 
-	public static String[] ECEN_2nd_YEAR = {
-		"ECEN201-18508", "ECEN202-18509", "ECEN203-18510", "ECEN220-18511"
+	public static String[] ECEN_2nd_YEAR_T1 = {
+		"ECEN203-18510"
 	};
 
-	public static String[] ECEN_3rd_YEAR = {
-		"ECEN301-18512","ECEN302-18513","ECEN303-18514","ECEN310-18515","ECEN315-18516","ECEN320-18517","ECEN330-18518"
+	public static String[] ECEN_2nd_YEAR_T2 = {
+		"ECEN201-18508", "ECEN202-18509", "ECEN220-18511"
 	};
 
-	public static String[] ECEN_4th_YEAR = {
-		"ECEN403-18520", "ECEN405-18521", "ECEN410-18522", "ECEN415-18519", "ECEN421-18523", "ECEN425-18524", "ECEN426-18574", "ECEN430-18576"
+	public static String[] ECEN_3rd_YEAR_T1 = {
+		"ECEN301-18512","ECEN315-18516","ECEN320-18517"
+	};
+
+	public static String[] ECEN_3rd_YEAR_T2 = {
+		"ECEN302-18513","ECEN303-18514","ECEN310-18515","ECEN330-18518"
+	};
+
+	public static String[] ECEN_4th_YEAR_T1 = {
+		"ECEN405-18521", "ECEN415-18519", "ECEN421-18523", "ECEN425-18524"
+	};
+
+	public static String[] ECEN_4th_YEAR_T2 = {
+		"ECEN403-18520", "ECEN430-18576"
 	};
 
 	// =====================================
 	// ENGR
 	// =====================================
 
-	public static String[] ENGR_1st_YEAR = {
-		"ENGR101-15243","ENGR110-26051","ENGR121-26052", "ENGR122-26053", "ENGR123-27044"
+	public static String[] ENGR_1st_YEAR_T1 = {
+		"ENGR101-15243", "ENGR122-26053", "ENGR123-27044"
 	};
 
-	public static String[] ENGR_3rd_YEAR = {
-		"ENGR301-17178","ENGR302-17179"
+	public static String[] ENGR_1st_YEAR_T2 = {
+		"ENGR110-26051", "ENGR122-26053", "ENGR123-27044"
 	};
 
-	public static String[] ENGR_4th_YEAR = {
+	public static String[] ENGR_2nd_YEAR_T1 = {
+	};
+
+	public static String[] ENGR_2nd_YEAR_T2 = {
+	};
+
+	public static String[] ENGR_3rd_YEAR_T1 = {
+		"ENGR301-17178"
+	};
+
+	public static String[] ENGR_3rd_YEAR_T2 = {
+		"ENGR302-17179"
+	};
+
+	public static String[] ENGR_4th_YEAR_T1 = {
 		"ENGR401-18690", "ENGR489-18688"
+	};
+
+	public static String[] ENGR_4th_YEAR_T2 = {
+		"ENGR489-18688"
 	};
 
 	// =====================================
 	// COMP
 	// =====================================
-	public static String[] COMP_1st_YEAR = {
-		"COMP102-943","COMP112-26034","COMP103-945"
+	public static String[] COMP_1st_YEAR_T1 = {
+		"COMP102-943","COMP112-26034"
 	};
 
-	public static String[] COMP_2nd_YEAR = {
+	public static String[] COMP_1st_YEAR_T2 = {
+		"COMP101-9792","COMP103-945"
+	};
+
+	public static String[] COMP_2nd_YEAR_T1 = {
 		"COMP261-183141"
 	};
 
-	public static String[] COMP_3rd_YEAR = {
-		"COMP304-964","COMP307-968","COMP308-23085","COMP312-10444","COMP313-25049","COMP361-26060"
+	public static String[] COMP_2nd_YEAR_T2 = {
 	};
 
-	public static String[] COMP_4th_YEAR = {
-		"COMP408-23084","COMP409-23083","COMP421-986","COMP422-2324","COMP423-4962","COMP425-990","COMP471-26217","COMP472-10767","COMP488-23082","COMP489-8243"
+	public static String[] COMP_3rd_YEAR_T1 = {
+		"COMP304-964","COMP307-968","COMP312-10444","COMP313-25049"
+	};
+
+	public static String[] COMP_3rd_YEAR_T2 = {
+		"COMP308-23085","COMP361-26060"
+	};
+
+	public static String[] COMP_4th_YEAR_T1 = {
+		"COMP423-4962","COMP425-990","COMP471-26217","COMP472-10767","COMP488-23082","COMP489-8243"
+	};
+
+	public static String[] COMP_4th_YEAR_T2 = {
+		"COMP408-23084","COMP409-23083","COMP421-986","COMP422-2324","COMP488-23082","COMP489-8243"
 	};
 
 	// =====================================
 	// GENERAL
 	// =====================================
-	public static String[] ALL_1st_YEAR = concat(ENGR_1st_YEAR, COMP_1st_YEAR);
+	public static String[] ALL_1st_YEAR_T1 = concat(ENGR_1st_YEAR_T1, COMP_1st_YEAR_T1);
 
-	public static String[] ALL_2nd_YEAR = concat(SWEN_2nd_YEAR, NWEN_2nd_YEAR, ECEN_2nd_YEAR, COMP_2nd_YEAR);
+	public static String[] ALL_1st_YEAR_T2 = concat(ENGR_1st_YEAR_T2, COMP_1st_YEAR_T2);
 
-	public static String[] ALL_3rd_YEAR = concat(SWEN_3rd_YEAR, NWEN_3rd_YEAR, ECEN_3rd_YEAR, ENGR_3rd_YEAR, COMP_3rd_YEAR);
+	public static String[] ALL_2nd_YEAR_T1 = concat(SWEN_2nd_YEAR_T1, NWEN_2nd_YEAR_T1, ECEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1, COMP_2nd_YEAR_T1);
 
-	public static String[] ALL_4th_YEAR = concat(SWEN_4th_YEAR, NWEN_4th_YEAR, ECEN_4th_YEAR, ENGR_4th_YEAR, COMP_4th_YEAR);
+	public static String[] ALL_2nd_YEAR_T2 = concat(SWEN_2nd_YEAR_T2, NWEN_2nd_YEAR_T2, ECEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2, COMP_2nd_YEAR_T2);
 
-	public static String[] ALL_COURSES = concat(ALL_1st_YEAR, ALL_2nd_YEAR, ALL_3rd_YEAR, ALL_4th_YEAR);
+	public static String[] ALL_3rd_YEAR_T1 = concat(SWEN_3rd_YEAR_T1, NWEN_3rd_YEAR_T1, ECEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1, COMP_3rd_YEAR_T1);
+
+	public static String[] ALL_3rd_YEAR_T2 = concat(SWEN_3rd_YEAR_T2, NWEN_3rd_YEAR_T2, ECEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2, COMP_3rd_YEAR_T2);
+
+	public static String[] ALL_4th_YEAR_T1 = concat(SWEN_4th_YEAR_T1, NWEN_4th_YEAR_T1, ECEN_4th_YEAR_T1, ENGR_4th_YEAR_T1, COMP_4th_YEAR_T1);
+
+	public static String[] ALL_4th_YEAR_T2 = concat(SWEN_4th_YEAR_T2, NWEN_4th_YEAR_T2, ECEN_4th_YEAR_T2, ENGR_4th_YEAR_T2, COMP_4th_YEAR_T2);
 
 	// =====================================
 	// MATH
 	// =====================================
 
 	public static String[] MATH_2nd_YEAR = {
-		"MATH211", "MATH243", "MATH244", "MATH251", "MATH261", "MATH277", "OPRE253","STAT292", "STAT293"
+		"MATH211", "MATH243-18323", "MATH244-18324", "MATH251-18325", "MATH261-18326", "MATH277-19804", "OPRE253","STAT292", "STAT293"
 	};
 
 	// =====================================
@@ -221,22 +296,81 @@ public class Main {
 
 	private static final ClashRule[] clashRules = {
 
-		// All 100-level ECS courses should not clash with each other ...
-		new CheckAllAgainstEachOther(ALL_1st_YEAR),
+		// --------------------------------------------------------
+		// 100 Level
+		// --------------------------------------------------------
+
+		// All 100-level ECS courses *in the same trimester* should not clash with each other ...
+		new CheckAllAgainstEachOther(ALL_1st_YEAR_T1),
+		new CheckAllAgainstEachOther(ALL_1st_YEAR_T2),
 
 		// nor with MATH 132, 141, 142, 151, 161, 177, ENGR 121, 122, 123, PHYS 114,
 		// 115, 122
+		new CheckAllAgainst(ALL_1st_YEAR_T1, "MATH132-17150",
+					"MATH141-17161", "MATH151-17161", "PHYS114-7534",
+					"PHYS122-18194"),
+
+		new CheckAllAgainst(ALL_1st_YEAR_T2, "MATH142-17160",
+					"MATH161-17162", "MATH177-19803", "PHYS115-7535"),
+
+		// --------------------------------------------------------
+		// --------------------------------------------------------
+
+		// COMP,SWEN,NWEN
+		new CheckAllAgainstEachOther(concat(SWEN_2nd_YEAR_T1, NWEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1, COMP_2nd_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(SWEN_2nd_YEAR_T2, NWEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2, COMP_2nd_YEAR_T2)),
+
+		// ECEN
+		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2)),
+
+		// Specials
+		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T1, "NWEN241-18315","COMP261-183141","SWEN221-18318")),
+		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T2, "NWEN242-18316","NWEN243-18363")),
+
+		// --------------------------------------------------------
+		// 300 Level
+		// --------------------------------------------------------
+
+		// COMP,SWEN,NWEN
+		new CheckAllAgainstEachOther(concat(SWEN_3rd_YEAR_T1, NWEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1, COMP_3rd_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(SWEN_3rd_YEAR_T2, NWEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2, COMP_3rd_YEAR_T2)),
+
+		// ECEN
+		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2)),
+		// Specials
+		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T1, "COMP307-968","NWEN301-17180", "SWEN303-17185")),
+		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T2, "NWEN302-17181","NWEN304-17184")),
+
+		// --------------------------------------------------------
+		// 400 Level
+		// --------------------------------------------------------
+
+		// COMP,SWEN,NWEN
+		new CheckAllAgainstEachOther(concat(SWEN_4th_YEAR_T1, NWEN_4th_YEAR_T1, ENGR_4th_YEAR_T1, COMP_4th_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(SWEN_4th_YEAR_T2, NWEN_4th_YEAR_T2, ENGR_4th_YEAR_T2, COMP_4th_YEAR_T2)),
+
+		// ECEN
+		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T1, ENGR_4th_YEAR_T1)),
+		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T2, ENGR_4th_YEAR_T2)),
+		// Specials
+		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T1, "NWEN403-18604","NWEN404-18605")),
+		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T2, "NWEN402-18603","SWEN422-18662"))
+
 	};
 
 	public static void main(String[] args) throws IOException {
 		ClashListReader reader = new ClashListReader(args[0]);
 		List<ClashList> clashLists = reader.read();
 		for(ClashList c : clashLists) {
+			HashSet<String> expected = new HashSet<String>();
 			for(ClashRule r : clashRules) {
-				ClashRule.Diff diff = r.check(c);
-				if(diff != null) {
-					System.out.println("*** ERROR: different clash lists for " + c.name() + " " + diff);
-				}
+				expected.addAll(r.generate(c));
+			}
+			ClashList.Diff diff = c.differenceFrom(expected);
+			if(diff != null) {
+				System.out.println("*** ERROR: invalid clash list for " + c.name() + " " + diff + "\n");
 			}
 		}
 	}
@@ -262,6 +396,19 @@ public class Main {
 
 		Arrays.sort(result);
 
+		return result;
+	}
+
+	/**
+	 * Concatenate an arbitrary number of lists together.
+	 *
+	 * @param lists
+	 * @return
+	 */
+	public static String[] concat(String[] l1, String... l2) {
+		String[] result = new String[l1.length + l2.length];
+		System.arraycopy(l1, 0, result, 0, l1.length);
+		System.arraycopy(l2, 0, result, l1.length, l2.length);
 		return result;
 	}
 }

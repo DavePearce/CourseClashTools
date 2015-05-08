@@ -1,11 +1,11 @@
 package clashtools.util;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import clashtools.core.ClashList;
 import clashtools.core.ClashRule;
-import clashtools.core.ClashRule.Diff;
 
 /**
  * This rule checks that every course in a list of courses is clashed against
@@ -25,36 +25,13 @@ public class CheckAllAgainstEachOther extends ClashRule {
 	}
 
 	@Override
-	public Diff check(ClashList c) {
+	public Set<String> generate(ClashList c) {
 		if(courses.contains(c.name())) {
 			HashSet<String> courses = new HashSet<String>(this.courses);
 			courses.remove(c.name()); // can't clash against self
-			Set<String> missing = diff(courses,c.noClashes());
-			Set<String> extra = diff(c.noClashes(),courses);
-			if(!missing.isEmpty() || !extra.isEmpty()) {
-				return new Diff(extra,missing);
-			}
+			return courses;
+		} else {
+			return Collections.EMPTY_SET;
 		}
-		return null;
-	}
-
-	private Set<String> intersect(Set<String> s1, Set<String> s2) {
-		HashSet<String> result = new HashSet<String>();
-		for(String s : s1) {
-			if(s2.contains(s)) {
-				result.add(s);
-			}
-		}
-		return result;
-	}
-
-	private Set<String> diff(Set<String> s1, Set<String> s2) {
-		HashSet<String> result = new HashSet<String>();
-		for(String s : s1) {
-			if(!s2.contains(s)) {
-				result.add(s);
-			}
-		}
-		return result;
 	}
 }

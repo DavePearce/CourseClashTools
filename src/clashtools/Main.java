@@ -53,15 +53,15 @@ public class Main {
 	// =====================================
 
 	public static String[] ECEN_2nd_YEAR = {
-		"ECEN201-18508", "ECEN202", "ECEN203", "ECEN220"
+		"ECEN201-18508", "ECEN202-18509", "ECEN203-18510", "ECEN220-18511"
 	};
 
 	public static String[] ECEN_3rd_YEAR = {
-		"ECEN301","ECEN302","ECEN303","ECEN310","ECEN315","ECEN320","ECEN330"
+		"ECEN301-18512","ECEN302-18513","ECEN303-18514","ECEN310-18515","ECEN315-18516","ECEN320-18517","ECEN330-18518"
 	};
 
 	public static String[] ECEN_4th_YEAR = {
-		"ECEN403", "ECEN405", "ECEN410", "ECEN415", "ECEN421", "ECEN425", "ECEN426", "ECEN430"
+		"ECEN403-18520", "ECEN405-18521", "ECEN410-18522", "ECEN415-18519", "ECEN421-18523", "ECEN425-18524", "ECEN426-18574", "ECEN430-18576"
 	};
 
 	// =====================================
@@ -69,34 +69,34 @@ public class Main {
 	// =====================================
 
 	public static String[] ENGR_1st_YEAR = {
-		"ENGR101","ENGR110","ENGR121", "ENGR122", "ENGR123"
+		"ENGR101-15243","ENGR110-26051","ENGR121-26052", "ENGR122-26053", "ENGR123-27044"
 	};
 
 	public static String[] ENGR_3rd_YEAR = {
-		"ENGR301","ENGR302"
+		"ENGR301-17178","ENGR302-17179"
 	};
 
 	public static String[] ENGR_4th_YEAR = {
-		"ENGR401", "ENGR489"
+		"ENGR401-18690", "ENGR489-18688"
 	};
 
 	// =====================================
 	// COMP
 	// =====================================
 	public static String[] COMP_1st_YEAR = {
-		"COMP102","COMP112","COMP103"
+		"COMP102-943","COMP112-26034","COMP103-945"
 	};
 
 	public static String[] COMP_2nd_YEAR = {
-		"COMP261"
+		"COMP261-183141"
 	};
 
 	public static String[] COMP_3rd_YEAR = {
-		"COMP304","COMP307","COMP308","COMP312","COMP313","COMP361"
+		"COMP304-964","COMP307-968","COMP308-23085","COMP312-10444","COMP313-25049","COMP361-26060"
 	};
 
 	public static String[] COMP_4th_YEAR = {
-		"COMP408","COMP409","COMP421","COMP422","COMP423","COMP425","COMP471","COMP472","COMP488","COMP489"
+		"COMP408-23084","COMP409-23083","COMP421-986","COMP422-2324","COMP423-4962","COMP425-990","COMP471-26217","COMP472-10767","COMP488-23082","COMP489-8243"
 	};
 
 	// =====================================
@@ -128,43 +128,43 @@ public class Main {
 
 	public static Prerequisites[] prereqs = {
 		// 100-level
-		new Prerequisites("COMP112","COMP102"), // Not necessary, but allows them to clash
-		new Prerequisites("COMP103","COMP102","COMP112"),
+		new Prerequisites("COMP112-26034","COMP102-943"), // Not necessary, but allows them to clash
+		new Prerequisites("COMP103-945","COMP102-943","COMP112-26034"),
 
 		// 200-level
-		new Prerequisites("COMP261","COMP103","MATH161"),
+		new Prerequisites("COMP261-183141","COMP103-945","MATH161"),
 
 		new Prerequisites("ECEN201-18508"),
-		new Prerequisites("ECEN202"),
-		new Prerequisites("ECEN203"),
-		new Prerequisites("ECEN220"),
+		new Prerequisites("ECEN202-18509"),
+		new Prerequisites("ECEN203-18510"),
+		new Prerequisites("ECEN220-18511"),
 
-		new Prerequisites("ENGR301"),
-		new Prerequisites("ENGR302","ENGR301"),
+		new Prerequisites("ENGR301-17178"),
+		new Prerequisites("ENGR302-17179","ENGR301-17178"),
 
-		new Prerequisites("SWEN221-18318","COMP103"),
+		new Prerequisites("SWEN221-18318","COMP103-945"),
 		new Prerequisites("SWEN222-18319","SWEN221-18318"),
-		new Prerequisites("SWEN223-18320","COMP103","ENGR110"),
-		new Prerequisites("SWEN224-18321","COMP103","MATH161"),
+		new Prerequisites("SWEN223-18320","COMP103-945","ENGR110-26051"),
+		new Prerequisites("SWEN224-18321","COMP103-945","MATH161"),
 
-		new Prerequisites("NWEN241-18315","COMP103"),
-		new Prerequisites("NWEN242-18316","COMP103","MATH161"),
-		new Prerequisites("NWEN243-18363","COMP103"),
+		new Prerequisites("NWEN241-18315","COMP103-945"),
+		new Prerequisites("NWEN242-18316","COMP103-945","MATH161"),
+		new Prerequisites("NWEN243-18363","COMP103-945"),
 
 		// 300-level
-		new Prerequisites("COMP304","MATH161","SWEN224-18321"),
-		new Prerequisites("COMP307"),
-		new Prerequisites("COMP308","COMP261"),
-		new Prerequisites("COMP312"),
-		new Prerequisites("COMP313"),
-		new Prerequisites("COMP361","COMP261"),
+		new Prerequisites("COMP304-964","MATH161","SWEN224-18321"),
+		new Prerequisites("COMP307-968"),
+		new Prerequisites("COMP308-23085","COMP261-183141"),
+		new Prerequisites("COMP312-10444"),
+		new Prerequisites("COMP313-25049"),
+		new Prerequisites("COMP361-26060","COMP261-183141"),
 
-		new Prerequisites("ECEN301","ECEN201-18508"),
-		new Prerequisites("ECEN302","ECEN202"),
-		new Prerequisites("ECEN303","ECEN203"),
-		new Prerequisites("ECEN310","ECEN220"),
-		new Prerequisites("ECEN315","ECEN220"),
-		new Prerequisites("ECEN330","ECEN203"),
+		new Prerequisites("ECEN301-18512","ECEN201-18508"),
+		new Prerequisites("ECEN302-18513","ECEN202-18509"),
+		new Prerequisites("ECEN303-18514","ECEN203-18510"),
+		new Prerequisites("ECEN310-18515","ECEN220-18511"),
+		new Prerequisites("ECEN315-18516","ECEN220-18511"),
+		new Prerequisites("ECEN330-18518","ECEN203-18510"),
 
 		new Prerequisites("NWEN301-17180","MATH161","NWEN241-18315","NWEN242-18316"),
 		new Prerequisites("NWEN302-17181","NWEN241-18315","NWEN242-18316"),
@@ -174,25 +174,25 @@ public class Main {
 		new Prerequisites("SWEN301-17183","SWEN222-18319","SWEN223-18320"),
 		new Prerequisites("SWEN302-17184","SWEN222-18319"),
 		new Prerequisites("SWEN303-17185"),
-		new Prerequisites("SWEN304-17186","COMP261","MATH161"),
+		new Prerequisites("SWEN304-17186","COMP261-183141","MATH161"),
 
 		// 400-level
-		new Prerequisites("COMP408","COMP308"),
-		new Prerequisites("COMP409","COMP308"),
-		new Prerequisites("COMP421","COMP307"),
-		new Prerequisites("COMP422","COMP307"),
-		new Prerequisites("COMP423","COMP307"),
+		new Prerequisites("COMP408-23084","COMP308-23085"),
+		new Prerequisites("COMP409-23083","COMP308-23085"),
+		new Prerequisites("COMP421-986","COMP307-968"),
+		new Prerequisites("COMP422-2324","COMP307-968"),
+		new Prerequisites("COMP423-4962","COMP307-968"),
 
-		new Prerequisites("ECEN403","ECEN303"),
-		new Prerequisites("ECEN410","ECEN310"),
-		new Prerequisites("ECEN415","ECEN315"),
-		new Prerequisites("ECEN421","ECEN320"),
-		new Prerequisites("ECEN421","ECEN320"),
-		new Prerequisites("ECEN425","ECEN301"),
-		new Prerequisites("ECEN430","ECEN301"),
+		new Prerequisites("ECEN403-18520","ECEN303-18514"),
+		new Prerequisites("ECEN410-18522","ECEN310-18515"),
+		new Prerequisites("ECEN415-18519","ECEN315-18516"),
+		new Prerequisites("ECEN421-18523","ECEN320-18517"),
+		new Prerequisites("ECEN421-18523","ECEN320-18517"),
+		new Prerequisites("ECEN425-18524","ECEN301-18512"),
+		new Prerequisites("ECEN430-18576","ECEN301-18512"),
 
-		new Prerequisites("ENGR401"),
-		new Prerequisites("ENGR489"),
+		new Prerequisites("ENGR401-18690"),
+		new Prerequisites("ENGR489-18688"),
 
 		new Prerequisites("NWEN401-18602"),
 		new Prerequisites("NWEN402-18603","NWEN302-17181","NWEN304-17184"),
@@ -209,7 +209,7 @@ public class Main {
 		new Prerequisites("SWEN426-18666","SWEN301-17183"),
 		new Prerequisites("SWEN427-18667","SWEN301-17183"),
 		new Prerequisites("SWEN430-18668"),
-		new Prerequisites("SWEN431-18669","COMP304"),
+		new Prerequisites("SWEN431-18669","COMP304-964"),
 		new Prerequisites("SWEN432-18670","SWEN304-17186"),
 		new Prerequisites("SWEN433-18671","SWEN304-17186"),
 		new Prerequisites("SWEN434-18672","SWEN304-17186"),

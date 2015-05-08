@@ -26,11 +26,16 @@ public class CheckAllAgainstEachOther extends ClashRule {
 
 	@Override
 	public Diff check(ClashList c) {
-		HashSet<String> courses = new HashSet<String>(this.courses);
-		courses.remove(c.name()); // can't clash against self
-		Set<String> missing = diff(courses,c.noClashes());
-		Set<String> extra = diff(c.noClashes(),courses);
-		return new Diff(extra,missing);
+		if(courses.contains(c.name())) {
+			HashSet<String> courses = new HashSet<String>(this.courses);
+			courses.remove(c.name()); // can't clash against self
+			Set<String> missing = diff(courses,c.noClashes());
+			Set<String> extra = diff(c.noClashes(),courses);
+			if(!missing.isEmpty() || !extra.isEmpty()) {
+				return new Diff(extra,missing);
+			}
+		}
+		return null;
 	}
 
 	private Set<String> intersect(Set<String> s1, Set<String> s2) {

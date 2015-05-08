@@ -2,10 +2,13 @@ package clashtools;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
+import clashtools.core.ClashList;
 import clashtools.core.Prerequisites;
 import clashtools.core.ClashRule;
 import clashtools.io.ClashListReader;
+import clashtools.util.CheckAllAgainstEachOther;
 
 public class Main {
 
@@ -15,15 +18,18 @@ public class Main {
 	// =====================================
 
 	public static String[] SWEN_2nd_YEAR = {
-		"SWEN221","SWEN222","SWEN223","SWEN224"
+		"SWEN221-18318","SWEN222-18319","SWEN223-18320","SWEN224-18321"
 	};
 
 	public static String[] SWEN_3rd_YEAR = {
-		"SWEN301","SWEN302","SWEN303","SWEN304"
+		"SWEN301-17183","SWEN302-17184","SWEN303-17185","SWEN304-17186"
 	};
 
 	public static String[] SWEN_4th_YEAR = {
-		"SWEN421","SWEN422","SWEN423","SWEN424","SWEN425","SWEN426","SWEN427","SWEN430","SWEN431","SWEN432","SWEN433","SWEN434","SWEN438","SWEN439"
+			"SWEN421-18661", "SWEN422-18662",
+			"SWEN423-18663", "SWEN424-18664", "SWEN425-18665", "SWEN426-18666",
+			"SWEN427-18667", "SWEN430-18668", "SWEN431-18669", "SWEN432-18670",
+			"SWEN433-18671", "SWEN434-18672", "SWEN438-18597", "SWEN439-18598"
 	};
 
 	// =====================================
@@ -136,17 +142,17 @@ public class Main {
 		new Prerequisites("ENGR301"),
 		new Prerequisites("ENGR302","ENGR301"),
 
-		new Prerequisites("SWEN221","COMP103"),
-		new Prerequisites("SWEN222","SWEN221"),
-		new Prerequisites("SWEN223","COMP103","ENGR110"),
-		new Prerequisites("SWEN224","COMP103","MATH161"),
+		new Prerequisites("SWEN221-18318","COMP103"),
+		new Prerequisites("SWEN222-18319","SWEN221-18318"),
+		new Prerequisites("SWEN223-18320","COMP103","ENGR110"),
+		new Prerequisites("SWEN224-18321","COMP103","MATH161"),
 
 		new Prerequisites("NWEN241","COMP103"),
 		new Prerequisites("NWEN242","COMP103","MATH161"),
 		new Prerequisites("NWEN243","COMP103"),
 
 		// 300-level
-		new Prerequisites("COMP304","MATH161","SWEN224"),
+		new Prerequisites("COMP304","MATH161","SWEN224-18321"),
 		new Prerequisites("COMP307"),
 		new Prerequisites("COMP308","COMP261"),
 		new Prerequisites("COMP312"),
@@ -165,10 +171,10 @@ public class Main {
 		new Prerequisites("NWEN303","MATH161","NWEN242"),
 		new Prerequisites("NWEN304","MATH161","NWEN243"),
 
-		new Prerequisites("SWEN301","SWEN222","SWEN223"),
-		new Prerequisites("SWEN302","SWEN222"),
-		new Prerequisites("SWEN303"),
-		new Prerequisites("SWEN304","COMP261","MATH161"),
+		new Prerequisites("SWEN301-17183","SWEN222-18319","SWEN223-18320"),
+		new Prerequisites("SWEN302-17184","SWEN222-18319"),
+		new Prerequisites("SWEN303-17185"),
+		new Prerequisites("SWEN304-17186","COMP261","MATH161"),
 
 		// 400-level
 		new Prerequisites("COMP408","COMP308"),
@@ -195,25 +201,25 @@ public class Main {
 		new Prerequisites("NWEN405","NWEN304"),
 		new Prerequisites("NWEN406","NWEN301"),
 
-		new Prerequisites("SWEN421","SWEN224"),
-		new Prerequisites("SWEN422","SWEN303"),
-		new Prerequisites("SWEN423"),
-		new Prerequisites("SWEN424"),
-		new Prerequisites("SWEN425","SWEN301"),
-		new Prerequisites("SWEN426","SWEN301"),
-		new Prerequisites("SWEN427","SWEN301"),
-		new Prerequisites("SWEN430"),
-		new Prerequisites("SWEN431","COMP304"),
-		new Prerequisites("SWEN432","SWEN304"),
-		new Prerequisites("SWEN433","SWEN304"),
-		new Prerequisites("SWEN434","SWEN304"),
+		new Prerequisites("SWEN421-18661","SWEN224-18321"),
+		new Prerequisites("SWEN422-18662","SWEN303-17185"),
+		new Prerequisites("SWEN423-18663"),
+		new Prerequisites("SWEN424-18664"),
+		new Prerequisites("SWEN425-18665","SWEN301-17183"),
+		new Prerequisites("SWEN426-18666","SWEN301-17183"),
+		new Prerequisites("SWEN427-18667","SWEN301-17183"),
+		new Prerequisites("SWEN430-18668"),
+		new Prerequisites("SWEN431-18669","COMP304"),
+		new Prerequisites("SWEN432-18670","SWEN304-17186"),
+		new Prerequisites("SWEN433-18671","SWEN304-17186"),
+		new Prerequisites("SWEN434-18672","SWEN304-17186"),
 	};
 
-	// ================================================
-	//
-	//
+	// ============================================================
+	// The Rules
+	// ============================================================
 
-	private static final ClashRule[] rules = {
+	private static final ClashRule[] clashRules = {
 
 		// All 100-level ECS courses should not clash with each other ...
 		new CheckAllAgainstEachOther(ALL_1st_YEAR),
@@ -224,7 +230,15 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		ClashListReader reader = new ClashListReader(args[0]);
-		reader.read();
+		List<ClashList> clashLists = reader.read();
+		for(ClashList c : clashLists) {
+			for(ClashRule r : clashRules) {
+				ClashRule.Diff diff = r.check(c);
+				if(diff != null) {
+					System.out.println("*** ERROR: different clash lists for " + c.name() + " " + diff);
+				}
+			}
+		}
 	}
 
 	/**

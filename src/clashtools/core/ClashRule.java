@@ -20,5 +20,25 @@ public abstract class ClashRule {
 			this.extra = extra;
 			this.missing = missing;
 		}
+
+		public String toString() {
+			String r = "";
+			boolean firstTime = true;
+			for(String s : extra) {
+				if(!firstTime) {
+					r += ", ";
+				}
+				firstTime = false;
+				r += "+" + s;
+			}
+			for(String s : missing) {
+				if(!firstTime) {
+					r += ", ";
+				}
+				firstTime = false;
+				r += "-" + s;
+			}
+			return r;
+		}
 	}
 }

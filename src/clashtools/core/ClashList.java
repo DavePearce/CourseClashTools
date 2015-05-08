@@ -16,8 +16,8 @@ public class ClashList {
 	private final String name;
 	private final HashSet<String> noClashes;
 
-	public ClashList(String name, Collection<String> noClashList) {
-		this.name = name;
+	public ClashList(String CRN, Collection<String> noClashList) {
+		this.name = CRN;
 		this.noClashes = new HashSet<String>(noClashList);
 	}
 

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 import clashtools.core.ClashList;
+import clashtools.core.Course;
 
 /**
  * This reads the course clash list as exported from Excel as a CSV file. This
@@ -46,11 +47,25 @@ public class ClashListReader {
 				String department = split.get(0);
 				String course = split.get(1);
 				String module = split.get(2);
+				String crn = module.substring(8);
 				String trimester = split.get(3);
 				String noClashes = split.get(4);
 				List<String> noClashList = split(noClashes.substring(1,noClashes.length()-1),lineNumber);
-				System.out.println("NO CLASH: " + noClashList);
-				courses.add(new ClashList(module,noClashList));
+				List<Course> cs = new ArrayList<Course>();
+				for(String c : noClashList) {
+					String c_crn = c.substring(8);
+					cs.add(Course.get(c_crn));
+				}
+				int[] trimesters;
+				if(trimester == "1") {
+					trimesters = new int[]{1};
+				} else if(trimester == "2") {
+					trimesters = new int[]{2};
+				} else {
+					trimesters = new int[]{1,2};
+				}
+				//courses.add(new ClashList(Course.create(course,crn,trimesters),cs));
+				courses.add(new ClashList(Course.get(crn),cs));
 			}
 			lineNumber = lineNumber+1;
 		}

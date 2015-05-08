@@ -1,11 +1,15 @@
 package clashtools;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static clashtools.CourseData.*;
+
 import clashtools.core.ClashList;
+import clashtools.core.Course;
 import clashtools.core.Prerequisites;
 import clashtools.core.ClashRule;
 import clashtools.io.ClashListReader;
@@ -301,62 +305,67 @@ public class Main {
 		// --------------------------------------------------------
 
 		// All 100-level ECS courses *in the same trimester* should not clash with each other ...
-		new CheckAllAgainstEachOther(ALL_1st_YEAR_T1),
-		new CheckAllAgainstEachOther(ALL_1st_YEAR_T2),
+		new CheckAllAgainstEachOther(concat(
+				Course.byLabelYear("ENGR", 100),
+				Course.byLabelYear("COMP", 100))),
 
 		// nor with MATH 132, 141, 142, 151, 161, 177, ENGR 121, 122, 123, PHYS 114,
 		// 115, 122
-		new CheckAllAgainst(ALL_1st_YEAR_T1, "MATH132-17150",
-					"MATH141-17161", "MATH151-17161", "PHYS114-7534",
-					"PHYS122-18194"),
-
-		new CheckAllAgainst(ALL_1st_YEAR_T2, "MATH142-17160",
-					"MATH161-17162", "MATH177-19803", "PHYS115-7535"),
+		new CheckAllAgainst(concat(
+				Course.byLabelYear("ENGR", 100),
+				Course.byLabelYear("COMP", 100)),
+				MATH132,MATH141,MATH142,MATH151,MATH142,MATH177,PHYS114,PHYS115,PHYS122),
 
 		// --------------------------------------------------------
 		// --------------------------------------------------------
 
 		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(SWEN_2nd_YEAR_T1, NWEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1, COMP_2nd_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(SWEN_2nd_YEAR_T2, NWEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2, COMP_2nd_YEAR_T2)),
+		new CheckAllAgainstEachOther(concat(
+					Course.byLabelYear("SWEN", 200),
+					Course.byLabelYear("NWEN", 200),
+					Course.byLabelYear("ENGR", 200),
+					Course.byLabelYear("COMP", 200))),
 
 		// ECEN
-		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2)),
+		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 200)),
 
 		// Specials
-		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T1, "NWEN241-18315","COMP261-183141","SWEN221-18318")),
-		new CheckAllAgainstEachOther(concat(ECEN_2nd_YEAR_T2, "NWEN242-18316","NWEN243-18363")),
+		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",200), NWEN241, NWEN242, NWEN243, COMP261, SWEN221)),
 
 		// --------------------------------------------------------
 		// 300 Level
 		// --------------------------------------------------------
 
 		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(SWEN_3rd_YEAR_T1, NWEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1, COMP_3rd_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(SWEN_3rd_YEAR_T2, NWEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2, COMP_3rd_YEAR_T2)),
+		new CheckAllAgainstEachOther(concat(
+				Course.byLabelYear("SWEN", 300),
+				Course.byLabelYear("NWEN", 300),
+				Course.byLabelYear("ENGR", 300),
+				Course.byLabelYear("COMP", 300))),
 
 		// ECEN
-		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2)),
+		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 300)),
+
 		// Specials
-		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T1, "COMP307-968","NWEN301-17180", "SWEN303-17185")),
-		new CheckAllAgainstEachOther(concat(ECEN_3rd_YEAR_T2, "NWEN302-17181","NWEN304-17184")),
+		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",300), NWEN301, NWEN302, NWEN304, COMP307, SWEN303)),
 
 		// --------------------------------------------------------
 		// 400 Level
 		// --------------------------------------------------------
 
+
 		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(SWEN_4th_YEAR_T1, NWEN_4th_YEAR_T1, ENGR_4th_YEAR_T1, COMP_4th_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(SWEN_4th_YEAR_T2, NWEN_4th_YEAR_T2, ENGR_4th_YEAR_T2, COMP_4th_YEAR_T2)),
+		new CheckAllAgainstEachOther(concat(
+				Course.byLabelYear("SWEN", 400),
+				Course.byLabelYear("NWEN", 400),
+				Course.byLabelYear("ENGR", 400),
+				Course.byLabelYear("COMP", 400))),
 
 		// ECEN
-		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T1, ENGR_4th_YEAR_T1)),
-		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T2, ENGR_4th_YEAR_T2)),
+		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 400)),
+
 		// Specials
-		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T1, "NWEN403-18604","NWEN404-18605")),
-		new CheckAllAgainstEachOther(concat(ECEN_4th_YEAR_T2, "NWEN402-18603","SWEN422-18662"))
+		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",400), NWEN402, NWEN403, NWEN404, SWEN422))
 
 	};
 
@@ -364,15 +373,45 @@ public class Main {
 		ClashListReader reader = new ClashListReader(args[0]);
 		List<ClashList> clashLists = reader.read();
 		for(ClashList c : clashLists) {
-			HashSet<String> expected = new HashSet<String>();
+			HashSet<Course> expected = new HashSet<Course>();
 			for(ClashRule r : clashRules) {
 				expected.addAll(r.generate(c));
 			}
 			ClashList.Diff diff = c.differenceFrom(expected);
 			if(diff != null) {
-				System.out.println("*** ERROR: invalid clash list for " + c.name() + " " + diff + "\n");
+				// At this point, I want to apply the filter. That is check the
+				// differences are because of the new rules introduced in 2015.
+				System.out.println("*** ERROR: invalid clash list for " + c.course() + " " + diff + "\n");
 			}
 		}
+	}
+
+	/**
+	 * Concatenate an arbitrary number of lists together.
+	 *
+	 * @param lists
+	 * @return
+	 */
+	public static ArrayList<Course> concat(List<Course>... lists) {
+		ArrayList<Course> r = new ArrayList<Course>();
+		for (List<Course> l : lists) {
+			r.addAll(l);
+		}
+		return r;
+	}
+
+	/**
+	 * Concatenate an arbitrary number of lists together.
+	 *
+	 * @param lists
+	 * @return
+	 */
+	public static ArrayList<Course> concat(List<Course> l1, Course... lists) {
+		ArrayList<Course> r = new ArrayList<Course>(l1);
+		for (Course c : lists) {
+			r.add(c);
+		}
+		return r;
 	}
 
 	/**

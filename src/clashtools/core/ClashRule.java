@@ -10,5 +10,5 @@ public abstract class ClashRule {
 	 * @param c
 	 * @return
 	 */
-	public abstract Set<String> generate(ClashList c);
+	public abstract Set<Course> generate(ClashList c);
 }

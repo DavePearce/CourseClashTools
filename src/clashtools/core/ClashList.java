@@ -15,36 +15,36 @@ import clashtools.core.ClashList.Diff;
  *
  */
 public class ClashList {
-	private final String name;
-	private final HashSet<String> noClashes;
+	private final Course course;
+	private final HashSet<Course> noClashes;
 
-	public ClashList(String CRN, Collection<String> noClashList) {
-		this.name = CRN;
-		this.noClashes = new HashSet<String>(noClashList);
+	public ClashList(Course course, Collection<Course> noClashList) {
+		this.course = course;
+		this.noClashes = new HashSet<Course>(noClashList);
 	}
 
-	public ClashList(String name, String... noClash) {
-		this.name = name;
-		this.noClashes = new HashSet<String>();
+	public ClashList(Course course, Course... noClash) {
+		this.course = course;
+		this.noClashes = new HashSet<Course>();
 		for(int i=0;i!=noClash.length;++i) {
 			this.noClashes.add(noClash[i]);
 		}
 	}
 
-	public String name() {
-		return name;
+	public Course course() {
+		return course;
 	}
 
-	public Set<String> noClashes() {
+	public Set<Course> noClashes() {
 		return noClashes;
 	}
 
 
 	public static class Diff {
-		public final Set<String> extra;
-		public final Set<String> missing;
+		public final Set<Course> extra;
+		public final Set<Course> missing;
 
-		public Diff(Set<String> extra, Set<String> missing) {
+		public Diff(Set<Course> extra, Set<Course> missing) {
 			this.extra = extra;
 			this.missing = missing;
 		}
@@ -52,14 +52,14 @@ public class ClashList {
 		public String toString() {
 			String r = "";
 			boolean firstTime = true;
-			for(String s : extra) {
+			for(Course s : extra) {
 				if(!firstTime) {
 					r += ", ";
 				}
 				firstTime = false;
 				r += "+" + s;
 			}
-			for(String s : missing) {
+			for(Course s : missing) {
 				if(!firstTime) {
 					r += ", ";
 				}
@@ -71,9 +71,9 @@ public class ClashList {
 	}
 
 
-	public Diff differenceFrom(HashSet<String> expected) {
-		Set<String> missing = diff(expected,noClashes);
-		Set<String> extra = diff(noClashes,expected);
+	public Diff differenceFrom(HashSet<Course> expected) {
+		Set<Course> missing = diff(expected,noClashes);
+		Set<Course> extra = diff(noClashes,expected);
 		if(missing.isEmpty() && extra.isEmpty()) {
 			return null;
 		} else {
@@ -81,20 +81,9 @@ public class ClashList {
 		}
 	}
 
-
-	private Set<String> intersect(Set<String> s1, Set<String> s2) {
-		HashSet<String> result = new HashSet<String>();
-		for(String s : s1) {
-			if(s2.contains(s)) {
-				result.add(s);
-			}
-		}
-		return result;
-	}
-
-	private Set<String> diff(Set<String> s1, Set<String> s2) {
-		HashSet<String> result = new HashSet<String>();
-		for(String s : s1) {
+	private Set<Course> diff(Set<Course> s1, Set<Course> s2) {
+		HashSet<Course> result = new HashSet<Course>();
+		for(Course s : s1) {
 			if(!s2.contains(s)) {
 				result.add(s);
 			}

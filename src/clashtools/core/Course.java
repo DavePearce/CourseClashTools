@@ -72,6 +72,10 @@ public class Course {
 		return database.get(crn);
 	}
 
+	public static Set<Course> getAll() {
+		return new HashSet<Course>(database.values());
+	}
+
 	public static List<Course> byLabel(String label) {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		for(Course c : database.values()) {

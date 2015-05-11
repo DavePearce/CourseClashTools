@@ -53,8 +53,14 @@ public class ClashListReader {
 				List<String> noClashList = split(noClashes.substring(1,noClashes.length()-1),lineNumber);
 				List<Course> cs = new ArrayList<Course>();
 				for(String c : noClashList) {
+					String c_nm = c.substring(0,7);
 					String c_crn = c.substring(8);
-					cs.add(Course.get(c_crn));
+					Course cd = Course.get(c_crn);
+					if(cd == null) {
+						// unknown course
+						cd = Course.create(c_nm,c_crn,1,2);
+					}
+					cs.add(cd);
 				}
 				int[] trimesters;
 				if(trimester == "1") {

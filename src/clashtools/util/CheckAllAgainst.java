@@ -1,5 +1,6 @@
 package clashtools.util;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,7 +21,7 @@ public class CheckAllAgainst extends ClashRule {
 	private final Set<Course> from;
 	private final Set<Course> to;
 
-	public CheckAllAgainst(Collection<Course> from, Course... to) {
+	public CheckAllAgainst(Collection<Course> from, Collection<Course> to) {
 		this.from = new HashSet<Course>();
 		for(Course s : from) {
 			this.from.add(s);
@@ -34,9 +35,30 @@ public class CheckAllAgainst extends ClashRule {
 	@Override
 	public Set<Course> generate(ClashList c) {
 		if(from.contains(c.course())) {
-			return new HashSet<Course>(to);
+			return filter(c.course().trimester());
 		} else {
 			return Collections.EMPTY_SET;
 		}
+	}
+
+	private Set<Course> filter(int... trimesters) {
+		HashSet<Course> r = new HashSet<Course>();
+		for(Course c : to) {
+			if(intersects(c.trimester(), trimesters)) {
+				r.add(c);
+			}
+		}
+		return r;
+	}
+
+	private static boolean intersects(int[] t1s, int[] t2s) {
+		for(int i=0;i!=t1s.length;++i) {
+			for(int j=0;j!=t2s.length;++j) {
+				if(t1s[i] == t2s[j]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

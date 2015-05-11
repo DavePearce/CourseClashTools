@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static clashtools.CourseData.*;
-
 import clashtools.core.ClashList;
 import clashtools.core.Course;
 import clashtools.core.Prerequisites;
@@ -18,186 +16,146 @@ import clashtools.util.CheckAllAgainstEachOther;
 
 public class Main {
 
+
 	// =====================================
 	// SWEN
 	// =====================================
 
-	public static String[] SWEN_2nd_YEAR_T1 = {
-		"SWEN221-18318","SWEN223-18320"
-	};
+	public static Course SWEN221 = Course.create("SWEN221","18318",1);
+	public static Course SWEN222 = Course.create("SWEN222","18319",2);
+	public static Course SWEN223 = Course.create("SWEN223","18320",1);
+	public static Course SWEN224 = Course.create("SWEN224","18321",2);
 
-	public static String[] SWEN_2nd_YEAR_T2 = {
-		"SWEN222-18319","SWEN224-18321"
-	};
+	public static Course SWEN301 = Course.create("SWEN301","17183",1);
+	public static Course SWEN302 = Course.create("SWEN302","17184",2);
+	public static Course SWEN303 = Course.create("SWEN303","17185",1);
+	public static Course SWEN304 = Course.create("SWEN304","17186",2);
 
-
-	public static String[] SWEN_3rd_YEAR_T1 = {
-		"SWEN301-17183","SWEN303-17185"
-	};
-
-	public static String[] SWEN_3rd_YEAR_T2 = {
-		"SWEN302-17184","SWEN304-17186"
-	};
-
-	public static String[] SWEN_4th_YEAR_T1 = {
-			"SWEN421-18661", "SWEN423-18663", "SWEN430-18668", "SWEN432-18670"
-	};
-
-	public static String[] SWEN_4th_YEAR_T2 = {
-			"SWEN422-18662", "SWEN424-18664", "SWEN425-18665", "SWEN431-18669",
-			"SWEN433-18671", "SWEN439-18598"
-	};
+	public static Course SWEN421 = Course.create("SWEN421","18661",1);
+	public static Course SWEN422 = Course.create("SWEN422","18662",2);
+	public static Course SWEN423 = Course.create("SWEN423","18663",1);
+	public static Course SWEN424 = Course.create("SWEN424","18664",2);
+	public static Course SWEN425 = Course.create("SWEN425","18665",2);
+	public static Course SWEN430 = Course.create("SWEN430","18668",1);
+	public static Course SWEN431 = Course.create("SWEN431","18669",2);
+	public static Course SWEN432 = Course.create("SWEN432","18670",1);
+	public static Course SWEN433 = Course.create("SWEN433","18671",2);
+	public static Course SWEN439 = Course.create("SWEN439","18598",2);
 
 	// =====================================
 	// NWEN
 	// =====================================
 
-	public static String[] NWEN_2nd_YEAR_T1 = {
-		"NWEN241-18315"
-	};
+	public static Course NWEN241 = Course.create("NWEN241","18315",1);
+	public static Course NWEN242 = Course.create("NWEN242","18316",2);
+	public static Course NWEN243 = Course.create("NWEN243","19863",2);
 
-	public static String[] NWEN_2nd_YEAR_T2 = {
-		"NWEN242-18316","NWEN243-18363"
-	};
+	public static Course NWEN301 = Course.create("NWEN301","17180",1);
+	public static Course NWEN302 = Course.create("NWEN302","17181",2);
+	public static Course NWEN303 = Course.create("NWEN303","17182",2);
+	public static Course NWEN304 = Course.create("NWEN304","19864",1);
 
-	public static String[] NWEN_3rd_YEAR_T1 = {
-		"NWEN301-17180","NWEN304-17184"
-	};
-
-	public static String[] NWEN_3rd_YEAR_T2 = {
-		"NWEN302-17181","NWEN303-17182"
-	};
-
-	public static String[] NWEN_4th_YEAR_T1 = {
-		"NWEN401-18602", "NWEN403-18604", "NWEN404-18605"
-	};
-
-	public static String[] NWEN_4th_YEAR_T2 = {
-		"NWEN402-18603", "NWEN405-18606", "NWEN406-18592"
-	};
+	public static Course NWEN401 = Course.create("NWEN401","18602",1);
+	public static Course NWEN402 = Course.create("NWEN402","18603",2);
+	public static Course NWEN403 = Course.create("NWEN403","18604",1);
+	public static Course NWEN404 = Course.create("NWEN404","18605",1);
+	public static Course NWEN405 = Course.create("NWEN405","18606",2);
+	public static Course NWEN406 = Course.create("NWEN406","18592",2);
 
 	// =====================================
 	// ECEN
 	// =====================================
 
-	public static String[] ECEN_2nd_YEAR_T1 = {
-		"ECEN203-18510"
-	};
+	public static Course ECEN201 = Course.create("ECEN201","18508",2);
+	public static Course ECEN202 = Course.create("ECEN202","18509",2);
+	public static Course ECEN203 = Course.create("ECEN203","18510",1);
+	public static Course ECEN220 = Course.create("ECEN220","18511",2);
 
-	public static String[] ECEN_2nd_YEAR_T2 = {
-		"ECEN201-18508", "ECEN202-18509", "ECEN220-18511"
-	};
+	public static Course ECEN301 = Course.create("ECEN301","18512",1);
+	public static Course ECEN302 = Course.create("ECEN302","18513",2);
+	public static Course ECEN303 = Course.create("ECEN303","18514",2);
+	public static Course ECEN310 = Course.create("ECEN310","18515",2);
+	public static Course ECEN315 = Course.create("ECEN315","18516",1);
+	public static Course ECEN320 = Course.create("ECEN320","18517",1);
+	public static Course ECEN330 = Course.create("ECEN330","18518",2);
 
-	public static String[] ECEN_3rd_YEAR_T1 = {
-		"ECEN301-18512","ECEN315-18516","ECEN320-18517"
-	};
+	public static Course ECEN405 = Course.create("ECEN405","18521",1);
+	public static Course ECEN410 = Course.create("ECEN415","18519",1);
+	public static Course ECEN415 = Course.create("ECEN415","18519",1);
+	public static Course ECEN421 = Course.create("ECEN421","18523",1);
+	public static Course ECEN425 = Course.create("ECEN425","18524",1);
 
-	public static String[] ECEN_3rd_YEAR_T2 = {
-		"ECEN302-18513","ECEN303-18514","ECEN310-18515","ECEN330-18518"
-	};
-
-	public static String[] ECEN_4th_YEAR_T1 = {
-		"ECEN405-18521", "ECEN415-18519", "ECEN421-18523", "ECEN425-18524"
-	};
-
-	public static String[] ECEN_4th_YEAR_T2 = {
-		"ECEN403-18520", "ECEN430-18576"
-	};
+	public static Course ECEN403 = Course.create("ECEN403","18520",2);
+	public static Course ECEN430 = Course.create("ECEN430","18576",2);
 
 	// =====================================
 	// ENGR
 	// =====================================
 
-	public static String[] ENGR_1st_YEAR_T1 = {
-		"ENGR101-15243", "ENGR122-26053", "ENGR123-27044"
-	};
+	public static Course ENGR101 = Course.create("ENGR101","15243",1);
+	public static Course ENGR110 = Course.create("ENGR110","26051",2);
+	public static Course ENGR121 = Course.create("ENGR121","26052",1);
+	public static Course ENGR122 = Course.create("ENGR122","26053",2);
+	public static Course ENGR123 = Course.create("ENGR123","27044",2);
 
-	public static String[] ENGR_1st_YEAR_T2 = {
-		"ENGR110-26051", "ENGR122-26053", "ENGR123-27044"
-	};
+	public static Course ENGR301 = Course.create("ENGR301","17178",1);
+	public static Course ENGR302 = Course.create("ENGR302","17179",2);
 
-	public static String[] ENGR_2nd_YEAR_T1 = {
-	};
-
-	public static String[] ENGR_2nd_YEAR_T2 = {
-	};
-
-	public static String[] ENGR_3rd_YEAR_T1 = {
-		"ENGR301-17178"
-	};
-
-	public static String[] ENGR_3rd_YEAR_T2 = {
-		"ENGR302-17179"
-	};
-
-	public static String[] ENGR_4th_YEAR_T1 = {
-		"ENGR401-18690", "ENGR489-18688"
-	};
-
-	public static String[] ENGR_4th_YEAR_T2 = {
-		"ENGR489-18688"
-	};
+	public static Course ENGR401 = Course.create("ENGR401","18690",1);
+	public static Course ENGR489 = Course.create("ENGR489","18688",1, 2);
 
 	// =====================================
 	// COMP
 	// =====================================
-	public static String[] COMP_1st_YEAR_T1 = {
-		"COMP102-943","COMP112-26034"
-	};
 
-	public static String[] COMP_1st_YEAR_T2 = {
-		"COMP101-9792","COMP103-945"
-	};
+	public static Course COMP102T1 = Course.create("COMP102","943",1);
+	public static Course COMP102T2 = Course.create("COMP102","9792",2);
+	public static Course COMP103 = Course.create("COMP103","945",2);
+	public static Course COMP112 = Course.create("COMP112","26034",1);
 
-	public static String[] COMP_2nd_YEAR_T1 = {
-		"COMP261-183141"
-	};
+	public static Course COMP261 = Course.create("COMP261","18314",1);
 
-	public static String[] COMP_2nd_YEAR_T2 = {
-	};
+	public static Course COMP304 = Course.create("COMP304","964",1);
+	public static Course COMP307 = Course.create("COMP307","968",1);
+	public static Course COMP308 = Course.create("COMP308","23085",2);
+	public static Course COMP312 = Course.create("COMP312","10444",1);
+	public static Course COMP313 = Course.create("COMP313","25049",1);
+	public static Course COMP361 = Course.create("COMP361","26060",2);
 
-	public static String[] COMP_3rd_YEAR_T1 = {
-		"COMP304-964","COMP307-968","COMP312-10444","COMP313-25049"
-	};
+	public static Course COMP408 = Course.create("COMP408","23084",2);
+	public static Course COMP409 = Course.create("COMP409","23083",2);
+	public static Course COMP421 = Course.create("COMP421","986",2);
+	public static Course COMP422 = Course.create("COMP422","2324",2);
+	public static Course COMP423 = Course.create("COMP423","4962",1);
+	public static Course COMP425 = Course.create("COMP425","990",1);
+	public static Course COMP471 = Course.create("COMP471","26217",1);
+	public static Course COMP472 = Course.create("COMP472","10767",1);
+	public static Course COMP488 = Course.create("COMP488","23082",1,2);
+	public static Course COMP489 = Course.create("COMP489","8243",1,2);
 
-	public static String[] COMP_3rd_YEAR_T2 = {
-		"COMP308-23085","COMP361-26060"
-	};
-
-	public static String[] COMP_4th_YEAR_T1 = {
-		"COMP423-4962","COMP425-990","COMP471-26217","COMP472-10767","COMP488-23082","COMP489-8243"
-	};
-
-	public static String[] COMP_4th_YEAR_T2 = {
-		"COMP408-23084","COMP409-23083","COMP421-986","COMP422-2324","COMP488-23082","COMP489-8243"
-	};
 
 	// =====================================
-	// GENERAL
-	// =====================================
-	public static String[] ALL_1st_YEAR_T1 = concat(ENGR_1st_YEAR_T1, COMP_1st_YEAR_T1);
-
-	public static String[] ALL_1st_YEAR_T2 = concat(ENGR_1st_YEAR_T2, COMP_1st_YEAR_T2);
-
-	public static String[] ALL_2nd_YEAR_T1 = concat(SWEN_2nd_YEAR_T1, NWEN_2nd_YEAR_T1, ECEN_2nd_YEAR_T1, ENGR_2nd_YEAR_T1, COMP_2nd_YEAR_T1);
-
-	public static String[] ALL_2nd_YEAR_T2 = concat(SWEN_2nd_YEAR_T2, NWEN_2nd_YEAR_T2, ECEN_2nd_YEAR_T2, ENGR_2nd_YEAR_T2, COMP_2nd_YEAR_T2);
-
-	public static String[] ALL_3rd_YEAR_T1 = concat(SWEN_3rd_YEAR_T1, NWEN_3rd_YEAR_T1, ECEN_3rd_YEAR_T1, ENGR_3rd_YEAR_T1, COMP_3rd_YEAR_T1);
-
-	public static String[] ALL_3rd_YEAR_T2 = concat(SWEN_3rd_YEAR_T2, NWEN_3rd_YEAR_T2, ECEN_3rd_YEAR_T2, ENGR_3rd_YEAR_T2, COMP_3rd_YEAR_T2);
-
-	public static String[] ALL_4th_YEAR_T1 = concat(SWEN_4th_YEAR_T1, NWEN_4th_YEAR_T1, ECEN_4th_YEAR_T1, ENGR_4th_YEAR_T1, COMP_4th_YEAR_T1);
-
-	public static String[] ALL_4th_YEAR_T2 = concat(SWEN_4th_YEAR_T2, NWEN_4th_YEAR_T2, ECEN_4th_YEAR_T2, ENGR_4th_YEAR_T2, COMP_4th_YEAR_T2);
-
-	// =====================================
-	// MATH
+	// OTHER
 	// =====================================
 
-	public static String[] MATH_2nd_YEAR = {
-		"MATH211", "MATH243-18323", "MATH244-18324", "MATH251-18325", "MATH261-18326", "MATH277-19804", "OPRE253","STAT292", "STAT293"
-	};
+	public static Course MATH132T1 = Course.create("MATH132","17150",1);
+	public static Course MATH132T2 = Course.create("MATH132","17286",2);
+	public static Course MATH141 = Course.create("MATH141","17151",1);
+	public static Course MATH142 = Course.create("MATH142","17160",2);
+	public static Course MATH151 = Course.create("MATH151","17161",1);
+	public static Course MATH161 = Course.create("MATH161","17162",2);
+	public static Course MATH177 = Course.create("MATH177","19803",2);
+
+	public static Course PHYS114 = Course.create("PHYS114","7534",1);
+	public static Course PHYS115 = Course.create("PHYS115","7535",2);
+	public static Course PHYS122 = Course.create("PHYS122","18194",1);
+
+	public static Course DSDN101 = Course.create("DSDN101","17120",1);
+	public static Course DSDN111 = Course.create("DSDN111","17123",1);
+	public static Course DSDN112 = Course.create("DSDN112","17124",1);
+	public static Course DSDN142 = Course.create("DSDN142","17154",1);
+	public static Course DSDN171 = Course.create("DSDN171","17129",1);
+
 
 	// =====================================
 	// HARD PREREQUISITES
@@ -298,78 +256,95 @@ public class Main {
 	// The Rules
 	// ============================================================
 
-	private static final ClashRule[] clashRules = {
+	private static ClashRule[] clashRules;
 
-		// --------------------------------------------------------
-		// 100 Level
-		// --------------------------------------------------------
+	private static void initClashRules() {
+		clashRules = new ClashRule[] {
 
-		// All 100-level ECS courses *in the same trimester* should not clash with each other ...
-		new CheckAllAgainstEachOther(concat(
-				Course.byLabelYear("ENGR", 100),
-				Course.byLabelYear("COMP", 100))),
+				// --------------------------------------------------------
+				// 100 Level
+				// --------------------------------------------------------
 
-		// nor with MATH 132, 141, 142, 151, 161, 177, ENGR 121, 122, 123, PHYS 114,
-		// 115, 122
-		new CheckAllAgainst(concat(
-				Course.byLabelYear("ENGR", 100),
-				Course.byLabelYear("COMP", 100)),
-				MATH132,MATH141,MATH142,MATH151,MATH142,MATH177,PHYS114,PHYS115,PHYS122),
+				// All 100-level ECS courses *in the same trimester* should not
+				// clash with each other ...
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ENGR", 100),
+						Course.byLabelYear("COMP", 100))),
 
-		// --------------------------------------------------------
-		// --------------------------------------------------------
+				// nor with MATH 132, 141, 142, 151, 161, 177, ENGR 121, 122,
+				// 123, PHYS 114,
+				// 115, 122
+				new CheckAllAgainst(concat(Course.byLabelYear("ENGR", 100),
+						Course.byLabelYear("COMP", 100)), concat(MATH132T1,
+						MATH132T2, MATH141, MATH142, MATH151, MATH142, MATH177,
+						PHYS114, PHYS115, PHYS122)),
 
-		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(
-					Course.byLabelYear("SWEN", 200),
-					Course.byLabelYear("NWEN", 200),
-					Course.byLabelYear("ENGR", 200),
-					Course.byLabelYear("COMP", 200))),
+				// --------------------------------------------------------
+				// --------------------------------------------------------
 
-		// ECEN
-		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 200)),
+				// COMP,SWEN,NWEN
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("SWEN", 200),
+						Course.byLabelYear("NWEN", 200),
+						Course.byLabelYear("ENGR", 200),
+						Course.byLabelYear("COMP", 200))),
 
-		// Specials
-		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",200), NWEN241, NWEN242, NWEN243, COMP261, SWEN221)),
+				// ECEN
+				new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 200)),
 
-		// --------------------------------------------------------
-		// 300 Level
-		// --------------------------------------------------------
+				// Specials
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ECEN", 200), NWEN241, NWEN242,
+						NWEN243, COMP261, SWEN221)),
 
-		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(
-				Course.byLabelYear("SWEN", 300),
-				Course.byLabelYear("NWEN", 300),
-				Course.byLabelYear("ENGR", 300),
-				Course.byLabelYear("COMP", 300))),
+				// --------------------------------------------------------
+				// 300 Level
+				// --------------------------------------------------------
 
-		// ECEN
-		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 300)),
+				// COMP,SWEN,NWEN
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("SWEN", 300),
+						Course.byLabelYear("NWEN", 300),
+						Course.byLabelYear("ENGR", 300),
+						Course.byLabelYear("COMP", 300))),
 
-		// Specials
-		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",300), NWEN301, NWEN302, NWEN304, COMP307, SWEN303)),
+				// ECEN
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ECEN", 300),
+						Course.byLabelYear("ENGR", 300))),
 
-		// --------------------------------------------------------
-		// 400 Level
-		// --------------------------------------------------------
+				// Specials
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ECEN", 300), NWEN301, NWEN302,
+						NWEN304, COMP307, SWEN303)),
 
+				// --------------------------------------------------------
+				// 400 Level
+				// --------------------------------------------------------
 
-		// COMP,SWEN,NWEN
-		new CheckAllAgainstEachOther(concat(
-				Course.byLabelYear("SWEN", 400),
-				Course.byLabelYear("NWEN", 400),
-				Course.byLabelYear("ENGR", 400),
-				Course.byLabelYear("COMP", 400))),
+				// COMP,SWEN,NWEN
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("SWEN", 400),
+						Course.byLabelYear("NWEN", 400),
+						Course.byLabelYear("ENGR", 400),
+						Course.byLabelYear("COMP", 400))),
 
-		// ECEN
-		new CheckAllAgainstEachOther(Course.byLabelYear("ECEN", 400)),
+				// ECEN
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ECEN", 400),
+						Course.byLabelYear("ENGR", 400))),
 
-		// Specials
-		new CheckAllAgainstEachOther(concat(Course.byLabelYear("ECEN",400), NWEN402, NWEN403, NWEN404, SWEN422))
+				// Specials
+				new CheckAllAgainstEachOther(concat(
+						Course.byLabelYear("ECEN", 400), NWEN402, NWEN403,
+						NWEN404, SWEN422))
 
-	};
+		};
+	}
+
 
 	public static void main(String[] args) throws IOException {
+		initClashRules();
 		ClashListReader reader = new ClashListReader(args[0]);
 		List<ClashList> clashLists = reader.read();
 		for(ClashList c : clashLists) {
@@ -377,13 +352,40 @@ public class Main {
 			for(ClashRule r : clashRules) {
 				expected.addAll(r.generate(c));
 			}
+
 			ClashList.Diff diff = c.differenceFrom(expected);
 			if(diff != null) {
-				// At this point, I want to apply the filter. That is check the
-				// differences are because of the new rules introduced in 2015.
-				System.out.println("*** ERROR: invalid clash list for " + c.course() + " " + diff + "\n");
+
+				// FIXME: applying filtering from 2015
+				HashSet<Course> nExtra = new HashSet<Course>();
+				for(Course x : diff.extra) {
+					if(x.year() == c.course().year() && intersects(x.trimester(),c.course().trimester())) {
+						nExtra.add(x);
+					}
+				}
+
+				diff = new ClashList.Diff(nExtra,diff.missing);
+
+				// --- END ---
+
+				if(diff.extra.size() > 0 || diff.missing.size() > 0) {
+					// At this point, I want to apply the filter. That is check the
+					// differences are because of the new rules introduced in 2015.
+					System.out.println("*** ERROR: invalid clash list for " + c.course() + " " + diff + "\n");
+				}
 			}
 		}
+	}
+
+	private static boolean intersects(int[] t1s, int[] t2s) {
+		for(int i=0;i!=t1s.length;++i) {
+			for(int j=0;j!=t2s.length;++j) {
+				if(t1s[i] == t2s[j]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -408,6 +410,20 @@ public class Main {
 	 */
 	public static ArrayList<Course> concat(List<Course> l1, Course... lists) {
 		ArrayList<Course> r = new ArrayList<Course>(l1);
+		for (Course c : lists) {
+			r.add(c);
+		}
+		return r;
+	}
+
+	/**
+	 * Concatenate an arbitrary number of lists together.
+	 *
+	 * @param lists
+	 * @return
+	 */
+	public static ArrayList<Course> concat(Course... lists) {
+		ArrayList<Course> r = new ArrayList<Course>();
 		for (Course c : lists) {
 			r.add(c);
 		}

@@ -1,10 +1,10 @@
 package clashtools.core;
 
 public class Prerequisites {
-	public final String course;
-	public final String[] prereqs;
+	public final Course course;
+	public final Course[] prereqs;
 
-	public Prerequisites(String course, String... prereqs) {
+	public Prerequisites(Course course, Course... prereqs) {
 		this.course = course;
 		this.prereqs = prereqs;
 	}

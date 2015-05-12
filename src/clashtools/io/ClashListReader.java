@@ -71,6 +71,10 @@ public class ClashListReader {
 					trimesters = new int[]{1,2};
 				}
 				//courses.add(new ClashList(Course.create(course,crn,trimesters),cs));
+				Course c = Course.get(crn);
+				if(c == null) {
+					throw new RuntimeException("Unknown course - " + course + "-" + crn);
+				}
 				courses.add(new ClashList(Course.get(crn),cs));
 			}
 			lineNumber = lineNumber+1;

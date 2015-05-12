@@ -84,6 +84,8 @@ public class Main {
 	public static Course ECEN415 = Course.create("ECEN415","18519",1);
 	public static Course ECEN421 = Course.create("ECEN421","18523",1);
 	public static Course ECEN425 = Course.create("ECEN425","18524",1);
+	public static Course ECEN426 = Course.create("ECEN426","18574"); //  WHICH TRIMESTER?
+	public static Course ECEN427 = Course.create("ECEN427","18575"); //  WHICH TRIMESTER?
 
 	public static Course ECEN403 = Course.create("ECEN403","18520",2);
 	public static Course ECEN430 = Course.create("ECEN430","18576",2);
@@ -133,6 +135,8 @@ public class Main {
 	public static Course COMP488 = Course.create("COMP488","23082",1,2);
 	public static Course COMP489 = Course.create("COMP489","8243",1,2);
 
+	public static Course COMP588 = Course.create("COMP588","8245",1,2);
+
 
 	// =====================================
 	// OTHER
@@ -161,95 +165,94 @@ public class Main {
 	// HARD PREREQUISITES
 	// =====================================
 
-	// These are prerequisites which must be observed.
+	// These are prerequisites which *must* be observed. They should be
+	// considered as disjunctions. For example, COMP103 depends on either
+	// COMP102T1 or COMP102T2.
 
 	public static Prerequisites[] prereqs = {
 		// 100-level
-		new Prerequisites("COMP112-26034","COMP102-943"), // Not necessary, but allows them to clash
-		new Prerequisites("COMP103-945","COMP102-943","COMP112-26034"),
+		new Prerequisites(COMP112,COMP102T1,COMP102T2), // Not necessary, but allows them to clash
+		new Prerequisites(COMP103,COMP102T1,COMP102T2,COMP112),
 
 		// 200-level
-		new Prerequisites("COMP261-183141","COMP103-945","MATH161"),
+		new Prerequisites(COMP261,COMP103,MATH161),
 
-		new Prerequisites("ECEN201-18508"),
-		new Prerequisites("ECEN202-18509"),
-		new Prerequisites("ECEN203-18510"),
-		new Prerequisites("ECEN220-18511"),
+		new Prerequisites(ECEN201),
+		new Prerequisites(ECEN202),
+		new Prerequisites(ECEN203),
+		new Prerequisites(ECEN220),
 
-		new Prerequisites("ENGR301-17178"),
-		new Prerequisites("ENGR302-17179","ENGR301-17178"),
+		new Prerequisites(ENGR301),
+		new Prerequisites(ENGR302,ENGR301),
 
-		new Prerequisites("SWEN221-18318","COMP103-945"),
-		new Prerequisites("SWEN222-18319","SWEN221-18318"),
-		new Prerequisites("SWEN223-18320","COMP103-945","ENGR110-26051"),
-		new Prerequisites("SWEN224-18321","COMP103-945","MATH161"),
+		new Prerequisites(SWEN221,COMP103),
+		new Prerequisites(SWEN222,SWEN221),
+		new Prerequisites(SWEN223,COMP103,ENGR110),
+		new Prerequisites(SWEN224,COMP103,MATH161),
 
-		new Prerequisites("NWEN241-18315","COMP103-945"),
-		new Prerequisites("NWEN242-18316","COMP103-945","MATH161"),
-		new Prerequisites("NWEN243-18363","COMP103-945"),
+		new Prerequisites(NWEN241,COMP103),
+		new Prerequisites(NWEN242,COMP103,MATH161),
+		new Prerequisites(NWEN243,COMP103),
 
 		// 300-level
-		new Prerequisites("COMP304-964","MATH161","SWEN224-18321"),
-		new Prerequisites("COMP307-968"),
-		new Prerequisites("COMP308-23085","COMP261-183141"),
-		new Prerequisites("COMP312-10444"),
-		new Prerequisites("COMP313-25049"),
-		new Prerequisites("COMP361-26060","COMP261-183141"),
+		new Prerequisites(COMP304,MATH161,SWEN224),
+		new Prerequisites(COMP307),
+		new Prerequisites(COMP308,COMP261),
+		new Prerequisites(COMP312),
+		new Prerequisites(COMP313),
+		new Prerequisites(COMP361,COMP261),
 
-		new Prerequisites("ECEN301-18512","ECEN201-18508"),
-		new Prerequisites("ECEN302-18513","ECEN202-18509"),
-		new Prerequisites("ECEN303-18514","ECEN203-18510"),
-		new Prerequisites("ECEN310-18515","ECEN220-18511"),
-		new Prerequisites("ECEN315-18516","ECEN220-18511"),
-		new Prerequisites("ECEN330-18518","ECEN203-18510"),
+		new Prerequisites(ECEN301,ECEN201),
+		new Prerequisites(ECEN302,ECEN202),
+		new Prerequisites(ECEN303,ECEN203),
+		new Prerequisites(ECEN310,ECEN220),
+		new Prerequisites(ECEN315,ECEN220),
+		new Prerequisites(ECEN330,ECEN203),
 
-		new Prerequisites("NWEN301-17180","MATH161","NWEN241-18315","NWEN242-18316"),
-		new Prerequisites("NWEN302-17181","NWEN241-18315","NWEN242-18316"),
-		new Prerequisites("NWEN303-17182","MATH161","NWEN242-18316"),
-		new Prerequisites("NWEN304-17184","MATH161","NWEN243-18363"),
+		new Prerequisites(NWEN301,MATH161,NWEN241,NWEN242),
+		new Prerequisites(NWEN302,NWEN241,NWEN242),
+		new Prerequisites(NWEN303,MATH161,NWEN242),
+		new Prerequisites(NWEN304,MATH161,NWEN243),
 
-		new Prerequisites("SWEN301-17183","SWEN222-18319","SWEN223-18320"),
-		new Prerequisites("SWEN302-17184","SWEN222-18319"),
-		new Prerequisites("SWEN303-17185"),
-		new Prerequisites("SWEN304-17186","COMP261-183141","MATH161"),
+		new Prerequisites(SWEN301,SWEN222,SWEN223),
+		new Prerequisites(SWEN302,SWEN222),
+		new Prerequisites(SWEN303),
+		new Prerequisites(SWEN304,COMP261,MATH161),
 
 		// 400-level
-		new Prerequisites("COMP408-23084","COMP308-23085"),
-		new Prerequisites("COMP409-23083","COMP308-23085"),
-		new Prerequisites("COMP421-986","COMP307-968"),
-		new Prerequisites("COMP422-2324","COMP307-968"),
-		new Prerequisites("COMP423-4962","COMP307-968"),
+		new Prerequisites(COMP408,COMP308),
+		new Prerequisites(COMP409,COMP308),
+		new Prerequisites(COMP421,COMP307),
+		new Prerequisites(COMP422,COMP307),
+		new Prerequisites(COMP423,COMP307),
 
-		new Prerequisites("ECEN403-18520","ECEN303-18514"),
-		new Prerequisites("ECEN410-18522","ECEN310-18515"),
-		new Prerequisites("ECEN415-18519","ECEN315-18516"),
-		new Prerequisites("ECEN421-18523","ECEN320-18517"),
-		new Prerequisites("ECEN421-18523","ECEN320-18517"),
-		new Prerequisites("ECEN425-18524","ECEN301-18512"),
-		new Prerequisites("ECEN430-18576","ECEN301-18512"),
+		new Prerequisites(ECEN403,ECEN303),
+		new Prerequisites(ECEN410,ECEN310),
+		new Prerequisites(ECEN415,ECEN315),
+		new Prerequisites(ECEN421,ECEN320),
+		new Prerequisites(ECEN421,ECEN320),
+		new Prerequisites(ECEN425,ECEN301),
+		new Prerequisites(ECEN430,ECEN301),
 
-		new Prerequisites("ENGR401-18690"),
-		new Prerequisites("ENGR489-18688"),
+		new Prerequisites(ENGR401),
+		new Prerequisites(ENGR489),
 
-		new Prerequisites("NWEN401-18602"),
-		new Prerequisites("NWEN402-18603","NWEN302-17181","NWEN304-17184"),
-		new Prerequisites("NWEN403-18604","NWEN302-17181"),
-		new Prerequisites("NWEN404-18605","NWEN302-17181"),
-		new Prerequisites("NWEN405-18606","NWEN304-17184"),
-		new Prerequisites("NWEN406-18592","NWEN301-17180"),
+		new Prerequisites(NWEN401),
+		new Prerequisites(NWEN402,NWEN302,NWEN304),
+		new Prerequisites(NWEN403,NWEN302),
+		new Prerequisites(NWEN404,NWEN302),
+		new Prerequisites(NWEN405,NWEN304),
+		new Prerequisites(NWEN406,NWEN301),
 
-		new Prerequisites("SWEN421-18661","SWEN224-18321"),
-		new Prerequisites("SWEN422-18662","SWEN303-17185"),
-		new Prerequisites("SWEN423-18663"),
-		new Prerequisites("SWEN424-18664"),
-		new Prerequisites("SWEN425-18665","SWEN301-17183"),
-		new Prerequisites("SWEN426-18666","SWEN301-17183"),
-		new Prerequisites("SWEN427-18667","SWEN301-17183"),
-		new Prerequisites("SWEN430-18668"),
-		new Prerequisites("SWEN431-18669","COMP304-964"),
-		new Prerequisites("SWEN432-18670","SWEN304-17186"),
-		new Prerequisites("SWEN433-18671","SWEN304-17186"),
-		new Prerequisites("SWEN434-18672","SWEN304-17186"),
+		new Prerequisites(SWEN421,SWEN224),
+		new Prerequisites(SWEN422,SWEN303),
+		new Prerequisites(SWEN423),
+		new Prerequisites(SWEN424),
+		new Prerequisites(SWEN425,SWEN301),
+		new Prerequisites(SWEN430),
+		new Prerequisites(SWEN431,COMP304),
+		new Prerequisites(SWEN432,SWEN304),
+		new Prerequisites(SWEN433,SWEN304)
 	};
 
 	// ============================================================
@@ -276,8 +279,8 @@ public class Main {
 				// 115, 122
 				new CheckAllAgainst(concat(Course.byLabelYear("ENGR", 100),
 						Course.byLabelYear("COMP", 100)), concat(MATH132T1,
-						MATH132T2, MATH141, MATH142, MATH151, MATH142, MATH177,
-						PHYS114, PHYS115, PHYS122)),
+						MATH132T2, MATH141, MATH142, MATH151, MATH161, MATH142,
+						MATH177, PHYS114, PHYS115, PHYS122)),
 
 				// --------------------------------------------------------
 				// --------------------------------------------------------
@@ -348,19 +351,26 @@ public class Main {
 		ClashListReader reader = new ClashListReader(args[0]);
 		List<ClashList> clashLists = reader.read();
 		for(ClashList c : clashLists) {
+			// First add all expected clashes
 			HashSet<Course> expected = new HashSet<Course>();
 			for(ClashRule r : clashRules) {
 				expected.addAll(r.generate(c));
 			}
+			// Second, remove all prerequisites
+			removeAllPrequisites(c.course(),expected);
 
+			// Third, report any differences
 			ClashList.Diff diff = c.differenceFrom(expected);
 			if(diff != null) {
 
 				// FIXME: applying filtering from 2015
 				HashSet<Course> nExtra = new HashSet<Course>();
 				for(Course x : diff.extra) {
-					if(x.year() == c.course().year() && intersects(x.trimester(),c.course().trimester())) {
+					if(x.year() == c.course().year() &&
+							intersects(x.trimester(),c.course().trimester())) {
 						nExtra.add(x);
+					} else {
+						c.noClashes().remove(x);
 					}
 				}
 
@@ -371,11 +381,51 @@ public class Main {
 				if(diff.extra.size() > 0 || diff.missing.size() > 0) {
 					// At this point, I want to apply the filter. That is check the
 					// differences are because of the new rules introduced in 2015.
-					System.out.println("*** ERROR: invalid clash list for " + c.course() + " " + diff + "\n");
+					System.err.println("*** Invalid clash list for " + c.course() + " : " + diff + "\n");
+				}
+			}
+		}
+
+		printClashLists(clashLists);
+	}
+
+	private static void printClashLists(List<ClashList> clashLists) {
+		for(ClashList c : clashLists) {
+			System.out.print("SECS," + c.course().code() + "," + c.course() + ",");
+			printTrimesters(c.course().trimester());
+			System.out.print(",\"");
+			boolean firstTime=true;
+			for(Course noClash : c.noClashes()) {
+				if(!firstTime) {
+					System.out.print(", ");
+				}
+				firstTime=false;
+				System.out.print(noClash);
+			}
+			System.out.println("\",,");
+
+		}
+	}
+
+	private static void printTrimesters(int[] trimester) {
+		if(trimester.length == 1) {
+			System.out.print(trimester[0]);
+		} else {
+			System.out.print("F");
+		}
+	}
+
+	private static void removeAllPrequisites(Course course,
+			HashSet<Course> expected) {
+		for(Prerequisites p : prereqs) {
+			if(p.course == course) {
+				for(Course c : p.prereqs) {
+					expected.remove(c);
 				}
 			}
 		}
 	}
+
 
 	private static boolean intersects(int[] t1s, int[] t2s) {
 		for(int i=0;i!=t1s.length;++i) {

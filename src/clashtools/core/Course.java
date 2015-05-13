@@ -29,6 +29,10 @@ public class Course {
 		return crn;
 	}
 
+	public boolean isOffered() {
+		return trimesters.length > 0;
+	}
+
 	public String toString() {
 		return code + "-" + crn;
 	}
@@ -58,7 +62,7 @@ public class Course {
 			if (!c.code().equals(code)
 					|| !Arrays.equals(c.trimester(), trimesters)) {
 				throw new IllegalArgumentException(
-						"Attempt to create non-identical course with identical crn");
+						"Attempt to create non-identical course with identical crn (" + c.code() + " vs " + code + ")");
 			}
 		} else {
 			c = new Course(code, crn, trimesters);

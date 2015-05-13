@@ -35,11 +35,15 @@ public class Main {
 	public static Course SWEN422 = Course.create("SWEN422","18662",2);
 	public static Course SWEN423 = Course.create("SWEN423","18663",1);
 	public static Course SWEN424 = Course.create("SWEN424","18664",2);
-	public static Course SWEN425 = Course.create("SWEN425","18665",2);
+	public static Course SWEN425 = Course.create("SWEN425","18665");
+	public static Course SWEN426 = Course.create("SWEN426","18666");
+	public static Course SWEN427 = Course.create("SWEN427","18667");
 	public static Course SWEN430 = Course.create("SWEN430","18668",1);
-	public static Course SWEN431 = Course.create("SWEN431","18669",2);
+	public static Course SWEN431 = Course.create("SWEN431","18669");
 	public static Course SWEN432 = Course.create("SWEN432","18670",1);
 	public static Course SWEN433 = Course.create("SWEN433","18671",2);
+	public static Course SWEN434 = Course.create("SWEN434","18672");
+	public static Course SWEN438 = Course.create("SWEN438","18597");
 	public static Course SWEN439 = Course.create("SWEN439","18598",2);
 
 	// =====================================
@@ -55,12 +59,14 @@ public class Main {
 	public static Course NWEN303 = Course.create("NWEN303","17182",2);
 	public static Course NWEN304 = Course.create("NWEN304","19864",1);
 
-	public static Course NWEN401 = Course.create("NWEN401","18602",1);
+	public static Course NWEN401 = Course.create("NWEN401","18602");
 	public static Course NWEN402 = Course.create("NWEN402","18603",2);
 	public static Course NWEN403 = Course.create("NWEN403","18604",1);
 	public static Course NWEN404 = Course.create("NWEN404","18605",1);
 	public static Course NWEN405 = Course.create("NWEN405","18606",2);
 	public static Course NWEN406 = Course.create("NWEN406","18592",2);
+	public static Course NWEN438 = Course.create("NWEN439","18593");
+	public static Course NWEN439 = Course.create("NWEN439","18594");
 
 	// =====================================
 	// ECEN
@@ -69,6 +75,9 @@ public class Main {
 	public static Course ECEN201 = Course.create("ECEN201","18508",2);
 	public static Course ECEN202 = Course.create("ECEN202","18509",2);
 	public static Course ECEN203 = Course.create("ECEN203","18510",1);
+	public static Course ECEN201_Lab = Course.create("ECEN201","18508-Lab",2);
+	public static Course ECEN202_Lab = Course.create("ECEN202","18509-Lab",2);
+	public static Course ECEN203_Lab = Course.create("ECEN203","18510-Lab",1);
 	public static Course ECEN220 = Course.create("ECEN220","18511",2);
 
 	public static Course ECEN301 = Course.create("ECEN301","18512",1);
@@ -80,12 +89,12 @@ public class Main {
 	public static Course ECEN330 = Course.create("ECEN330","18518",2);
 
 	public static Course ECEN405 = Course.create("ECEN405","18521",1);
-	public static Course ECEN410 = Course.create("ECEN415","18519",1);
-	public static Course ECEN415 = Course.create("ECEN415","18519",1);
+	public static Course ECEN410 = Course.create("ECEN410","18522",2);
+	public static Course ECEN415 = Course.create("ECEN415","18519",2);
 	public static Course ECEN421 = Course.create("ECEN421","18523",1);
 	public static Course ECEN425 = Course.create("ECEN425","18524",1);
-	public static Course ECEN426 = Course.create("ECEN426","18574"); //  WHICH TRIMESTER?
-	public static Course ECEN427 = Course.create("ECEN427","18575"); //  WHICH TRIMESTER?
+	public static Course ECEN426 = Course.create("ECEN426","18574",2);
+	public static Course ECEN427 = Course.create("ECEN427","18575"); // NOT OFFERED
 
 	public static Course ECEN403 = Course.create("ECEN403","18520",2);
 	public static Course ECEN430 = Course.create("ECEN430","18576",2);
@@ -99,6 +108,10 @@ public class Main {
 	public static Course ENGR121 = Course.create("ENGR121","26052",1);
 	public static Course ENGR122 = Course.create("ENGR122","26053",2);
 	public static Course ENGR123 = Course.create("ENGR123","27044",2);
+	public static Course ENGR142 = Course.create("ENGR142","27045",2);
+	public static Course ENGR291 = Course.create("ENGR291","18717",1,2);
+	public static Course ENGR391 = Course.create("ENGR391","18718",1,2);
+	public static Course ENGR491 = Course.create("ENGR491","18701",1,2);
 
 	public static Course ENGR301 = Course.create("ENGR301","17178",1);
 	public static Course ENGR302 = Course.create("ENGR302","17179",2);
@@ -112,7 +125,8 @@ public class Main {
 
 	public static Course COMP102T1 = Course.create("COMP102","943",1);
 	public static Course COMP102T2 = Course.create("COMP102","9792",2);
-	public static Course COMP103 = Course.create("COMP103","945",2);
+	public static Course COMP103T1 = Course.create("COMP103","7223"); // NOT OFFERED
+	public static Course COMP103T2 = Course.create("COMP103","945",2);
 	public static Course COMP112 = Course.create("COMP112","26034",1);
 
 	public static Course COMP261 = Course.create("COMP261","18314",1);
@@ -133,7 +147,8 @@ public class Main {
 	public static Course COMP471 = Course.create("COMP471","26217",1);
 	public static Course COMP472 = Course.create("COMP472","10767",1);
 	public static Course COMP488 = Course.create("COMP488","23082",1,2);
-	public static Course COMP489 = Course.create("COMP489","8243",1,2);
+	public static Course COMP489 = Course.create("COMP489","1027",1,2);
+	public static Course COMP489T3 = Course.create("COMP489","8243");
 
 	public static Course COMP588 = Course.create("COMP588","8245",1,2);
 
@@ -149,6 +164,10 @@ public class Main {
 	public static Course MATH151 = Course.create("MATH151","17161",1);
 	public static Course MATH161 = Course.create("MATH161","17162",2);
 	public static Course MATH177 = Course.create("MATH177","19803",2);
+
+	public static Course MATH244 = Course.create("MATH244","18324",1); // need to keep clash
+	public static Course MATH251 = Course.create("MATH251","18325",1);
+	public static Course MATH261 = Course.create("MATH261","18326",1);
 
 	public static Course PHYS114 = Course.create("PHYS114","7534",1);
 	public static Course PHYS115 = Course.create("PHYS115","7535",2);
@@ -172,10 +191,10 @@ public class Main {
 	public static Prerequisites[] prereqs = {
 		// 100-level
 		new Prerequisites(COMP112,COMP102T1,COMP102T2), // Not necessary, but allows them to clash
-		new Prerequisites(COMP103,COMP102T1,COMP102T2,COMP112),
+		new Prerequisites(COMP103T2,COMP102T1,COMP102T2,COMP112),
 
 		// 200-level
-		new Prerequisites(COMP261,COMP103,MATH161),
+		new Prerequisites(COMP261,COMP103T2,MATH161),
 
 		new Prerequisites(ECEN201),
 		new Prerequisites(ECEN202),
@@ -185,14 +204,14 @@ public class Main {
 		new Prerequisites(ENGR301),
 		new Prerequisites(ENGR302,ENGR301),
 
-		new Prerequisites(SWEN221,COMP103),
+		new Prerequisites(SWEN221,COMP103T2),
 		new Prerequisites(SWEN222,SWEN221),
-		new Prerequisites(SWEN223,COMP103,ENGR110),
-		new Prerequisites(SWEN224,COMP103,MATH161),
+		new Prerequisites(SWEN223,COMP103T2,ENGR110),
+		new Prerequisites(SWEN224,COMP103T2,MATH161),
 
-		new Prerequisites(NWEN241,COMP103),
-		new Prerequisites(NWEN242,COMP103,MATH161),
-		new Prerequisites(NWEN243,COMP103),
+		new Prerequisites(NWEN241,COMP103T2),
+		new Prerequisites(NWEN242,COMP103T2,MATH161),
+		new Prerequisites(NWEN243,COMP103T2),
 
 		// 300-level
 		new Prerequisites(COMP304,MATH161,SWEN224),
@@ -275,8 +294,7 @@ public class Main {
 						Course.byLabelYear("COMP", 100))),
 
 				// nor with MATH 132, 141, 142, 151, 161, 177, ENGR 121, 122,
-				// 123, PHYS 114,
-				// 115, 122
+				// 123, PHYS 114, 115, 122
 				new CheckAllAgainst(concat(Course.byLabelYear("ENGR", 100),
 						Course.byLabelYear("COMP", 100)), concat(MATH132T1,
 						MATH132T2, MATH141, MATH142, MATH151, MATH161, MATH142,
@@ -297,8 +315,8 @@ public class Main {
 
 				// Specials
 				new CheckAllAgainstEachOther(concat(
-						Course.byLabelYear("ECEN", 200), NWEN241, NWEN242,
-						NWEN243, COMP261, SWEN221)),
+						Course.byLabelYear("ECEN", 200), MATH244, NWEN241,
+						NWEN242, NWEN243, COMP261, SWEN221)),
 
 				// --------------------------------------------------------
 				// 300 Level
@@ -339,7 +357,7 @@ public class Main {
 
 				// Specials
 				new CheckAllAgainstEachOther(concat(
-						Course.byLabelYear("ECEN", 400), NWEN402, NWEN403,
+						Course.byLabelYear("ECEN", 400), COMP421, NWEN402, NWEN403,
 						NWEN404, SWEN422))
 
 		};
@@ -373,8 +391,16 @@ public class Main {
 						c.noClashes().remove(x);
 					}
 				}
-
-				diff = new ClashList.Diff(nExtra,diff.missing);
+				// add missing courses
+				HashSet<Course> nMissing = new HashSet<Course>();
+				for(Course x : diff.missing) {
+					if(x.isOffered()) {
+						c.noClashes().add(x);
+					} else {
+						nMissing.add(x);
+					}
+				}
+				diff = new ClashList.Diff(nExtra,nMissing);
 
 				// --- END ---
 
@@ -391,19 +417,22 @@ public class Main {
 
 	private static void printClashLists(List<ClashList> clashLists) {
 		for(ClashList c : clashLists) {
-			System.out.print("SECS," + c.course().code() + "," + c.course() + ",");
-			printTrimesters(c.course().trimester());
-			System.out.print(",\"");
-			boolean firstTime=true;
-			for(Course noClash : c.noClashes()) {
-				if(!firstTime) {
-					System.out.print(", ");
+			if(c.course().isOffered()) {
+				System.out.print("SECS," + c.course().code() + "," + c.course() + ",");
+				printTrimesters(c.course().trimester());
+				System.out.print(",\"");
+				boolean firstTime=true;
+				for(Course noClash : c.noClashes()) {
+					if(noClash.isOffered()) {
+						if(!firstTime) {
+							System.out.print(", ");
+						}
+						firstTime=false;
+						System.out.print(noClash);
+					}
 				}
-				firstTime=false;
-				System.out.print(noClash);
+				System.out.println("\",,");
 			}
-			System.out.println("\",,");
-
 		}
 	}
 

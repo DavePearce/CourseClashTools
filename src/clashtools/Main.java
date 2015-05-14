@@ -145,6 +145,7 @@ public class Main {
 	public static Course COMP425 = Course.create("COMP425","990",1);
 	public static Course COMP471 = Course.create("COMP471","26217",1);
 	public static Course COMP472 = Course.create("COMP472","10767",1);
+	public static Course COMP473 = Course.create("COMP473","XXXXX",1);
 	public static Course COMP488 = Course.create("COMP488","23082",1,2);
 	public static Course COMP489 = Course.create("COMP489","1027",1,2);
 	public static Course COMP489T3 = Course.create("COMP489","8243");
@@ -175,6 +176,7 @@ public class Main {
 	public static Course DSDN101 = Course.create("DSDN101","17120",1);
 	public static Course DSDN111 = Course.create("DSDN111","17123",1);
 	public static Course DSDN112 = Course.create("DSDN112","17124",1);
+	public static Course DSDN141 = Course.create("DSDN141","17126",2);
 	public static Course DSDN142 = Course.create("DSDN142","17154",1);
 	public static Course DSDN171 = Course.create("DSDN171","17129",1);
 
@@ -299,6 +301,10 @@ public class Main {
 						MATH132T2, MATH141, MATH142, MATH151, MATH161, MATH142,
 						MATH177, PHYS114, PHYS115, PHYS122)),
 
+				// enable graphics programme
+				new CheckAllAgainst(concat(COMP102T1, COMP103T2, ENGR121,
+						ENGR123), concat(DSDN101, DSDN111, DSDN141)),
+
 				// --------------------------------------------------------
 				// --------------------------------------------------------
 
@@ -359,7 +365,7 @@ public class Main {
 						Course.byLabelYear("SWEN", 400),
 						Course.byLabelYear("NWEN", 400),
 						Course.byLabelYear("ECEN", 400),
-						Course.byLabelYear("COMP", 400)),
+						Course.byLabelYearExcept("COMP", 400, COMP488,COMP489)),
 						concat(ENGR489,COMP488,COMP489,COMP588)),
 
 				// ECEN Specials

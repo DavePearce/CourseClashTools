@@ -109,4 +109,17 @@ public class Course {
 		}
 		return courses;
 	}
+
+	public static List<Course> byLabelYearExcept(String label, int year, Course... exceptions) {
+		ArrayList<Course> courses = new ArrayList<Course>();
+		for(Course c : database.values()) {
+			if(c.label().equals(label) && c.year() == year) {
+				courses.add(c);
+			}
+		}
+		for(Course c : exceptions) {
+			courses.remove(c);
+		}
+		return courses;
+	}
 }

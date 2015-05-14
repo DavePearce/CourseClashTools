@@ -88,6 +88,7 @@ public class Main {
 	public static Course ECEN320 = Course.create("ECEN320","18517",1);
 	public static Course ECEN330 = Course.create("ECEN330","18518",2);
 
+	public static Course ECEN403 = Course.create("ECEN403","18520",2);
 	public static Course ECEN405 = Course.create("ECEN405","18521",1);
 	public static Course ECEN410 = Course.create("ECEN410","18522",2);
 	public static Course ECEN415 = Course.create("ECEN415","18519",2);
@@ -95,8 +96,6 @@ public class Main {
 	public static Course ECEN425 = Course.create("ECEN425","18524",1);
 	public static Course ECEN426 = Course.create("ECEN426","18574",2);
 	public static Course ECEN427 = Course.create("ECEN427","18575"); // NOT OFFERED
-
-	public static Course ECEN403 = Course.create("ECEN403","18520",2);
 	public static Course ECEN430 = Course.create("ECEN430","18576",2);
 
 	// =====================================
@@ -347,15 +346,23 @@ public class Main {
 				new CheckAllAgainstEachOther(concat(
 						Course.byLabelYear("SWEN", 400),
 						Course.byLabelYear("NWEN", 400),
-						Course.byLabelYear("ENGR", 400),
-						Course.byLabelYear("COMP", 400))),
+						Course.byLabelYearExcept("ENGR", 400, ENGR489),
+						Course.byLabelYearExcept("COMP", 400, COMP488))),
 
 				// ECEN
 				new CheckAllAgainstEachOther(concat(
 						Course.byLabelYear("ECEN", 400),
-						Course.byLabelYear("ENGR", 400))),
+						Course.byLabelYearExcept("ENGR", 400, ENGR489))),
 
-				// Specials
+				// Project courses
+				new CheckAllAgainst(concat(
+						Course.byLabelYear("SWEN", 400),
+						Course.byLabelYear("NWEN", 400),
+						Course.byLabelYear("ECEN", 400),
+						Course.byLabelYear("COMP", 400)),
+						concat(ENGR489,COMP488,COMP489,COMP588)),
+
+				// ECEN Specials
 				new CheckAllAgainstEachOther(concat(
 						Course.byLabelYear("ECEN", 400), COMP421, NWEN402, NWEN403,
 						NWEN404, SWEN422))

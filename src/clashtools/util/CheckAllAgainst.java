@@ -35,15 +35,17 @@ public class CheckAllAgainst extends ClashRule {
 	@Override
 	public Set<Course> generate(ClashList c) {
 		if(from.contains(c.course())) {
-			return filter(c.course().trimester());
+			return filter(to,c.course().trimester());
+		} else if(to.contains(c.course())) {
+			return filter(from,c.course().trimester());
 		} else {
 			return Collections.EMPTY_SET;
 		}
 	}
 
-	private Set<Course> filter(int... trimesters) {
+	private static Set<Course> filter(Set<Course> courses, int... trimesters) {
 		HashSet<Course> r = new HashSet<Course>();
-		for(Course c : to) {
+		for(Course c : courses) {
 			if(intersects(c.trimester(), trimesters)) {
 				r.add(c);
 			}
